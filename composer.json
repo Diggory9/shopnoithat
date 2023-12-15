@@ -1,0 +1,17 @@
+{
+    "name": "viet2/demo",
+    "autoload": {
+        "psr-4": {
+            "app\\":"./"
+        }
+    },
+    "authors": [
+        {
+            "name": "viet22nph",
+            "email": "viet22nph@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}
