@@ -5,7 +5,7 @@ use app\controllers\AuthController;
 use app\controllers\AdminController;
 use app\controllers\CategoryController;
 use app\controllers\ProductController;
-use app\controllers\RoleController;
+
 use app\model\RegisterModel;
 require_once __DIR__.'/../vendor/autoload.php';
 require_once '../configs/db.php';
@@ -33,6 +33,24 @@ $app->router->get('/product',[ProductController::class,'showProduct']);
 
 
 $app->router->get('/admin',[AdminController::class,'home']);
+// category
+$app->router->get('/admin/category',[CategoryController::class,'index']);
+$app->router->get('/admin/category/add',[CategoryController::class,'add']);
+$app->router->post('/admin/category/add',[CategoryController::class,'add']);
+$app->router->get('/admin/category/edit',[CategoryController::class,'edit']);
+$app->router->post('/admin/category/edit',[CategoryController::class,'edit']);
+$app->router->get('/admin/category/remove',[CategoryController::class,'remove']);
+
+// supplier
+$app->router->get('/admin/supplier',[SupplierController::class,'index']);
+$app->router->get('/admin/supplier/add',[SupplierController::class,'add']);
+$app->router->post('/admin/supplier/add',[SupplierController::class,'add']);
+
+$app->router->get('/admin/supplier/edit',[SupplierController::class,'edit']);
+$app->router->post('/admin/supplier/edit',[SupplierController::class,'edit']);
+$app->router->get('/admin/supplier/remove',[SupplierController::class,'remove']);
+
+
 
 $app->router->get('/admin/category',[CategoryController::class,'index']);
 $app->router->get('/admin/category/add',[CategoryController::class,'add']);

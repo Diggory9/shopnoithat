@@ -1,14 +1,15 @@
 <?php
 namespace app\core;
 abstract class Model
-{
+{   
+    private $pattern = '/^(03|05|07|08|09)[0-9]{8}$/';
     public const RULE_REQUIRED ='required';
     public const RULE_EMAIL ='email';
     public const RULE_MIN ='min';
     public const RULE_MAX ='max';
     public const RULE_MACTH ='macth';
     public const RULE_UNIQUE ='unique';
-
+    public const RULE_PHONE ='phone';
 
 
     public function loadData($data)
@@ -76,6 +77,10 @@ abstract class Model
                         $this->addErrorsForRule($attribute,self::RULE_UNIQUE,['field'=>$value]);
                     }
                 }
+                if($ruleName === self::RULE_PHONE && !preg_match($this->pattern, $value))
+                {
+                    $this->addErrorsForRule($attribute, self::RULE_PHONE);
+                }
             }
           
         }
@@ -103,7 +108,8 @@ abstract class Model
         self::RULE_MIN =>'Min lenght of this field must be {min}',
         self::RULE_MAX =>'Max lenght of this field must be {max}',
         self::RULE_MACTH =>'This filed must be the same as {match}',
-        self::RULE_UNIQUE =>'Record with this email {field} already exists',
+        self::RULE_UNIQUE =>'Record with this {field} already exists',
+        self::RULE_PHONE =>'Số điện thoại nhập vào không hợp lệ',
         ];
         
     }
