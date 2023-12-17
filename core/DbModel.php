@@ -1,6 +1,8 @@
 <?php
 namespace app\core;
 
+use Exception;
+
 abstract class DbModel extends Model
 {
     abstract public function tableName(): string;
@@ -21,6 +23,59 @@ abstract class DbModel extends Model
         $stmt->execute();
         return true;
 
+    }
+
+    public function update(array $attribute, array $where)
+    {
+        try
+        {
+            $tableName = static::tableName();
+            $wheres = array_keys($where);// get key;
+            $whereSql = implode('and', array_map(fn($attr)=> "$attr = :$attr",$wheres)); 
+            $attributes = array_keys($attribute);
+            $params = implode(',', array_map(fn($attr)=> "$attr = :$attr",$attributes));
+            $sql = "update $tableName set $params WHERE $whereSql";
+
+            $stmt = self::prepare($sql);
+            foreach($where as $key => $value)
+            {
+                $stmt->bindValue(":$key", $value);
+            }
+            foreach($attribute as $key => $value)
+            {
+                $stmt->bindValue(":$key", $value);
+            }
+            $stmt->execute();
+            return true;
+        }catch(Exception $e)
+        {
+            return false;
+        }
+        
+    }
+
+    public function remove(array $where)
+    {
+        try
+        {
+            $tableName = static::tableName();
+            $wheres = array_keys($where);// get key;
+            $whereSql = implode('and', array_map(fn($attr)=> "$attr = :$attr",$wheres)); 
+            $sql = "DELETE FROM $tableName WHERE $whereSql";
+            
+            $stmt = self::prepare($sql);
+            foreach($where as $key => $value)
+            {
+                $stmt->bindValue(":$key", $value);
+            }
+            $stmt->execute();
+            return true;
+        }catch(Exception $e)
+        {
+            echo $e->getMessage();
+            exit;
+            return false;
+        }
     }
     public static function prepare($sql)
     {

@@ -22,7 +22,7 @@ $app->router->get('/register',[AuthController::class,'register']);
 $app->router->post('/register',[AuthController::class,'register']);
 
 $app->router->get('/logout',[AuthController::class,'logout']);
-$app->router->get('/profile/{name?}',[AuthController::class,'profile']);
+$app->router->get('/profile',[AuthController::class,'profile']);
 
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
@@ -35,5 +35,8 @@ $app->router->get('/admin',[AdminController::class,'home']);
 
 $app->router->get('/admin/category',[CategoryController::class,'index']);
 $app->router->get('/admin/category/add',[CategoryController::class,'add']);
-
+$app->router->post('/admin/category/add',[CategoryController::class,'add']);
+$app->router->get('/admin/category/edit',[CategoryController::class,'edit']);
+$app->router->post('/admin/category/edit',[CategoryController::class,'edit']);
+$app->router->get('/admin/category/remove',[CategoryController::class,'remove']);
 $app->run();
