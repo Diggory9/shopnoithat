@@ -20,7 +20,7 @@ class Application{
     public static Application $app;
     public function __construct($rootpath)
     {
-        
+        $this->controller = new Controller();
         self::$ROOT_DIR = $rootpath;
         self::$app = $this;
         $this->requset = new Request();
