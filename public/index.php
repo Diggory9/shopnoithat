@@ -5,7 +5,8 @@ use app\controllers\AuthController;
 use app\controllers\AdminController;
 use app\controllers\CategoryController;
 use app\controllers\ProductController;
-
+use app\controllers\RoleController;
+use app\controllers\SupplierController;
 use app\model\RegisterModel;
 require_once __DIR__.'/../vendor/autoload.php';
 require_once '../configs/db.php';
