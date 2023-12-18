@@ -19,7 +19,7 @@ use app\models\Supplier;
 
         public function add(Request $request)
         {
-            $supplier = new Supplier();
+            $supplier = new Supplier(); 
             if ($request->isPost())
             {
                 $supplier->loadData($request->getBody());

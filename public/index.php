@@ -5,7 +5,9 @@ use app\controllers\AuthController;
 use app\controllers\AdminController;
 use app\controllers\CategoryController;
 use app\controllers\ProductController;
-
+use app\controllers\SupplierController;
+use app\controllers\RoleController;
+use app\controllers\UserController;
 use app\model\RegisterModel;
 require_once __DIR__.'/../vendor/autoload.php';
 require_once '../configs/db.php';
@@ -45,25 +47,24 @@ $app->router->get('/admin/category/remove',[CategoryController::class,'remove'])
 $app->router->get('/admin/supplier',[SupplierController::class,'index']);
 $app->router->get('/admin/supplier/add',[SupplierController::class,'add']);
 $app->router->post('/admin/supplier/add',[SupplierController::class,'add']);
-
 $app->router->get('/admin/supplier/edit',[SupplierController::class,'edit']);
 $app->router->post('/admin/supplier/edit',[SupplierController::class,'edit']);
 $app->router->get('/admin/supplier/remove',[SupplierController::class,'remove']);
 
-
-
-$app->router->get('/admin/category',[CategoryController::class,'index']);
-$app->router->get('/admin/category/add',[CategoryController::class,'add']);
-$app->router->post('/admin/category/add',[CategoryController::class,'add']);
-$app->router->get('/admin/category/edit',[CategoryController::class,'edit']);
-$app->router->post('/admin/category/edit',[CategoryController::class,'edit']);
-$app->router->get('/admin/category/remove',[CategoryController::class,'remove']);
-
+// role
 $app->router->get('/admin/role',[RoleController::class,'index']);
 $app->router->get('/admin/role/add',[RoleController::class,'add']);
 $app->router->post('/admin/role/add',[RoleController::class,'add']);
 $app->router->get('/admin/role/edit',[RoleController::class,'edit']);
 $app->router->post('/admin/role/edit',[RoleController::class,'edit']);
 $app->router->get('/admin/role/remove',[RoleController::class,'remove']);
+
+//user
+$app->router->get('/admin/user',[UserController::class,'index']);
+$app->router->get('/admin/user/add',[UserController::class,'add']);
+$app->router->post('/admin/user/add',[UserController::class,'add']);
+$app->router->get('/admin/user/edit',[UserController::class,'edit']);
+$app->router->post('/admin/user/edit',[UserController::class,'edit']);
+$app->router->get('/admin/user/remove',[UserController::class,'remove']);
 
 $app->run();
