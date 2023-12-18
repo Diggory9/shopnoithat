@@ -48,14 +48,19 @@ use app\models\Users;
             if ($request->isPost())
             {
                 $user->loadData($request->getBody());
-                echo '<pre>';
-                var_dump($user);
-                echo '</pre>';
-                if ($user->validate() && $user->upateUser(['user_email'=>$user->user_email,
+                // kiểm tra mk không đổi
+                $userCheck = $user->findOne(['user_id'=>$user->user_id]);
+                if ($userCheck->user_password !== $user->user_password)
+                {
+                    $user->user_password = md5($user->user_password);
+                }
+                $attribute = ['user_email'=>$user->user_email,
                 'user_firstname'=>$user->user_firstname, 'user_lastname'=>$user->user_lastname,
                 'user_phone'=>$user->user_phone,'user_address'=>$user->user_address,
-                'user_password'=>$user->user_password,'status'=>$user->status],
-                ['user_id'=>$user->user_id]))
+                'user_password'=>$user->user_password];
+
+                $where =   ['user_id'=>$user->user_id];
+                if ($user->validate() && $user->upateUser($attribute,$where))
                 {
                     Application::$app->session->setFlash('success', 'Edit data user successfuly!');
                     Application::$app->response->redirect('/admin/user');

@@ -7,16 +7,17 @@ use Exception;
 
     class Users extends DbModel
     {
-        
+        public const STATUS_ACTIVITY = 0;
+        public const STATUS_LOCK = 1;
         protected $table ="user";
         public int $user_id;
         public string $user_email;
         public string $user_firstname;
         public string $user_lastname;
-        public string $user_phone;
-        public string $user_address;
+        public  $user_phone;
+        public  $user_address;
         public string $user_password;
-        public string $status;
+        public int $status;
        
 
 
@@ -28,8 +29,6 @@ use Exception;
                 'user_lastname'=>[self::RULE_REQUIRED],
                 'user_phone'=>[self::RULE_REQUIRED],
                 'user_address'=>[self::RULE_REQUIRED],
-                'user_password'=>[self::RULE_REQUIRED],
-                'status'=>[self::RULE_REQUIRED],
             ];
         }
     
@@ -53,7 +52,7 @@ use Exception;
                 $sql = "select * from user";
                 $stm = self::prepare($sql);
                 $stm->execute();
-                $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+                $data = $stm->fetchAll(\PDO::FETCH_CLASS,static::class);
                 return $data;
             }catch (Exception $e)
             {
@@ -63,11 +62,23 @@ use Exception;
         public function insertData()
         {
             $data = self::findOne(['user_email'=>$this->user_email]);
+            $isError = 0;
             if(!empty( $data))
             {
                 $this->addErrors('email','Tên email đã tồn tại trong hệ thống');
+                $isError =1;
+            }
+            if(empty($this->user_password))
+            {
+                $this->addErrors(self::RULE_REQUIRED,'Mật khẩu chưa được nhập');
+                $isError =1;
+            }
+            if($isError == 1)
+            {
                 return false;
             }
+            $this->status = self::STATUS_ACTIVITY;
+            $this->user_password = md5($this->user_password);
             return self::save(['user_email','user_firstname','user_lastname','user_phone','user_address','user_password','status']);
         }
 

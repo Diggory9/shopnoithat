@@ -1,6 +1,6 @@
 <?php 
 namespace app\core;
-class Database
+class Database 
 {
 
     private static $instance = null;
