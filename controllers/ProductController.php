@@ -37,10 +37,10 @@ class ProductController extends Controller
         $this->setLayout('admin');
         return $this->render('product/showTable', ['data' => $data]);
     }
-    public function showDetail()
+    public function showDetail(Request $request)
     {
-        $id = 1;
-
+        $reqGet = $request->getBody();
+        $id = $reqGet['id'];
         $pro = new Product();
 
         $image = new ProductImage();
@@ -53,6 +53,8 @@ class ProductController extends Controller
     public function showProduct($category = '')
     {
         $data = $this->product->getProductByPage();
+        $categoris = $this->category->selectAll();
+        $suppliers = $this->supplier->selectAll();
         $image = new ProductImage();
         foreach ($data as $value)
         {
@@ -62,7 +64,7 @@ class ProductController extends Controller
                 $value->images = $dataImg;
             }
         }
-        return $this->render('product_page', ['data' => $data]);
+        return $this->render('product_page', ['data' => $data,'categoris'=>$categoris,'supplier'=>$suppliers]);
     }
 
     public function productAddAdmin(Request $request)
