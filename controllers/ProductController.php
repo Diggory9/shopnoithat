@@ -138,7 +138,7 @@ class ProductController extends Controller
         if($pro_image->removeImg($imgId))
         {
             Application::$app->session->setFlash('success', 'Xóa thành công!');
-            unlink(__DIR_ROOT."public/images/uploads" . $imgName);
+            unlink(__DIR_ROOT."public/images/uploads/" . $imgName);
             Application::$app->response->redirect('/admin/product/edit?id='.$idPro);
             
         } else
@@ -148,4 +148,51 @@ class ProductController extends Controller
             Application::$app->response->redirect('/admin/product/edit?id='.$idPro);
         }
     }
+    public function addImage(Request $request)
+    {
+        if($request->isPost() )
+        {
+            $reqPost = $request->getBody();
+            $files = $request->getFiles();
+            $dir = __DIR_ROOT . '/public/images/uploads/';
+            $id = $reqPost['id'];
+            $this->product->product_id = $id;
+            $check = $this->product->addImages($files['images'],$dir);
+            if($check)
+            {
+                Application::$app->session->setFlash('success', 'Thêm thành công!');
+                Application::$app->response->redirect('/admin/product/edit?id='.$id);
+            }
+            else{
+                Application::$app->session->setFlash('success', 'Thêm không thành công!');
+                Application::$app->response->redirect('/admin/product/edit?id='.$id);
+            }
+        }
+    }
+
+    public function updateProduct(Request $request)
+    {
+        if($request->isPost() )
+        {
+            $this->product->loadData($request->getBody());
+            $attribute =['product_name'=>$this->product->product_name, 
+            'product_des'=>$this->product->product_des,
+            'product_price'=>$this->product->product_price,
+            'product_stock_quantity'=>$this->product->product_stock_quantity,
+            'category_id'=>$this->product->category_id,
+            'supplier_id'=>$this->product->supplier_id];
+            $productId =$this->product->product_id;
+            $where = ['product_id'=>$this->product->product_id];
+            if($this->product->validate() && $this->product->updateProduct($attribute,$where))
+            {
+                Application::$app->session->setFlash('success', 'Thêm thành công!');
+                Application::$app->response->redirect('/admin/product/edit?id='.$productId);
+            }
+            else{
+                Application::$app->session->setFlash('success', 'Thêm không thành công!');
+                Application::$app->response->redirect('/admin/product/edit?id='.$productId);
+            }
+        }
+    }
+
 }

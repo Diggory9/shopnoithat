@@ -66,6 +66,9 @@ $app->router->post('/admin/product/add',[ProductController::class,'productAddAdm
 $app->router->get('/admin/product/detail',[ProductController::class,'productDetailAdmin']);
 $app->router->get('/admin/product/edit',[ProductController::class,'productEditAdmin']);
 $app->router->get('/admin/product/removeImg',[ProductController::class,'removeImg']);
+$app->router->post('/admin/product/addImg',[ProductController::class,'addImage']);
+$app->router->post('/admin/product/update',[ProductController::class,'updateProduct']);
+
 
 
 

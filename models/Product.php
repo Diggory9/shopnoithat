@@ -73,12 +73,12 @@ class Product extends DbModel
     }
     public function saveProduct($file,$uploadDirectory)
     {   
-       $d = self::findOne(['product_name',$this->product_name]);
+       $d = self::findOne(['product_name'=>$this->product_name]);
        if(!empty($d))
        {
             $this->addErrors(self::RULE_UNIQUE,"Tên sản phẩm bị trùng");
             return false;
-       }
+       }              
 
         $check = true;
         $table = $this->tableName();
@@ -129,6 +129,11 @@ class Product extends DbModel
             return false;
         }
         return true;
+    }
+
+    public function updateProduct(array $attribute, array $where)
+    {
+        return self::update($attribute, $where);
     }
 }
 ?>
