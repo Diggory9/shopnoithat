@@ -95,6 +95,9 @@ class Product extends DbModel
      
        return $check;
     }
+}
+
+
     public function addImages($file,$uploadDirectory)
     {
         if (!empty($file['name'][0])) {
