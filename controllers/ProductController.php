@@ -73,7 +73,7 @@ class ProductController extends Controller
         {
             $this->product->loadData($request->getBody());
             $files = $request->getFiles();
-            $dir = __DIR_ROOT . '/public/images/uploads';
+            $dir = __DIR_ROOT . '/public/images/uploads/';
             if ($this->product->validate() && $this->product->saveProduct($files['images'], $dir))
             {
                 Application::$app->session->setFlash('success', 'Insert data product is successfuly!');
