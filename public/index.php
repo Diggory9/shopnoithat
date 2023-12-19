@@ -7,6 +7,7 @@ use app\controllers\CategoryController;
 use app\controllers\ProductController;
 use app\controllers\RoleController;
 use app\controllers\SupplierController;
+use app\controllers\UserController;
 use app\model\RegisterModel;
 require_once __DIR__.'/../vendor/autoload.php';
 require_once '../configs/db.php';
@@ -68,5 +69,12 @@ $app->router->get('/admin/product/edit',[ProductController::class,'productEditAd
 $app->router->get('/admin/product/removeImg',[ProductController::class,'removeImg']);
 
 
+//user
+$app->router->get('/admin/user',[UserController::class,'index']);
+$app->router->get('/admin/user/add',[UserController::class,'add']);
+$app->router->post('/admin/user/add',[UserController::class,'add']);
+$app->router->get('/admin/user/edit',[UserController::class,'edit']);
+$app->router->post('/admin/user/edit',[UserController::class,'edit']);
+$app->router->get('/admin/user/remove',[UserController::class,'remove']);
 
 $app->run();

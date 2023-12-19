@@ -73,7 +73,7 @@ class Product extends DbModel
     }
     public function saveProduct($file,$uploadDirectory)
     {   
-       $d = self::findOne(['product_name',$this->product_name]);
+       $d = self::findOne(['product_name'=>$this->product_name]);
        if(!empty($d))
        {
             $this->addErrors(self::RULE_UNIQUE,"Tên sản phẩm bị trùng");
@@ -94,7 +94,7 @@ class Product extends DbModel
         $lastInsertedId = Application::$app->db->getConnection()->lastInsertId();
         $this->product_id = $lastInsertedId;
         $check = $this->addImages($file, $uploadDirectory);
-
+     
        return $check;
     }
     public function addImages($file,$uploadDirectory)
