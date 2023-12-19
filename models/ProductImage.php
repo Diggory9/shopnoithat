@@ -7,7 +7,7 @@ class ProductImage extends DbModel
     public $image_id;
     public $product_id;
     public $image_path;
-    protected $tableName = 'image_product';
+    protected $tableName = 'product_image';
     public function getImageByProductId($id){
         $data = self::find(['product_id'=>$id]);
 
@@ -19,7 +19,7 @@ class ProductImage extends DbModel
     }
     public function attribute():array
     {
-        return ['user_firstname', 'user_lastname', 'user_email','user_password'];
+        return ['product_id','image_path'];
     }
     public function primaryKey(): string
     {
@@ -29,6 +29,19 @@ class ProductImage extends DbModel
     {
         return [
         ];
+    }
+
+    public function saveImageProduct()
+    {
+        return self::save($this->attribute());
+    }
+    public function removeImg($id)
+    {
+        return self::remove(['image_id',$id]);
+    }
+    public function getImgById($id)
+    {
+        return self::findOne(['image_id'=> $id]);
     }
 }
 
