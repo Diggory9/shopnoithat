@@ -37,7 +37,7 @@ class ProductImage extends DbModel
     }
     public function removeImg($id)
     {
-        return self::remove(['image_id',$id]);
+        return self::remove(['image_id'=>$id]);
     }
     public function getImgById($id)
     {
