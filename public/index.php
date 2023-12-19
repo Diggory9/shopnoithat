@@ -75,6 +75,9 @@ $app->router->get('/admin/user/add',[UserController::class,'add']);
 $app->router->post('/admin/user/add',[UserController::class,'add']);
 $app->router->get('/admin/user/edit',[UserController::class,'edit']);
 $app->router->post('/admin/user/edit',[UserController::class,'edit']);
-$app->router->get('/admin/user/remove',[UserController::class,'remove']);
+
+$app->router->post('/admin/product/addImg',[ProductController::class,'addImage']);
+$app->router->post('/admin/product/update',[ProductController::class,'updateProduct']);
+
 
 $app->run();
