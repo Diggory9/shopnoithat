@@ -1,66 +1,76 @@
 <?php
-namespace app\core;
-class Request
-{
-    public function getPath()
+    namespace app\core;
+    class Request
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
-        $postion = strpos($path,'?');
-        if($postion=== false)
+        public function getPath()
         {
-            return $path;
-        }
-        return substr($path,0,$postion);
-    }
-    public function getMethod()
-    {
-        return strtolower($_SERVER['REQUEST_METHOD']) ;
-    }
-    public function isGet()
-    {
-        return $this->getMethod() === 'get'?true:false;
-    }
-
-    
-    public function isPost()
-    {
-        return $this->getMethod() === 'post'?true:false;
-    }
-
-    public  function getBody()
-    {
-        $body =[];
-        if( $this->getMethod() ==='get')
-        {
-           
-            foreach($_GET as $key => $value)
+            $path = $_SERVER['REQUEST_URI'] ?? '/';
+            $postion = strpos($path,'?');
+            if($postion=== false)
             {
-                if(is_array($value))
+                return $path;
+            }
+            return substr($path,0,$postion);
+        }
+        public function getMethod()
+        {
+            return strtolower($_SERVER['REQUEST_METHOD']) ;
+        }
+        public function isGet()
+        {
+            return $this->getMethod() === 'get'?true:false;
+        }
+
+        
+        public function isPost()
+        {
+            return $this->getMethod() === 'post'?true:false;
+        }
+
+        public  function getBody()
+        {
+            $body =[];
+            if( $this->getMethod() ==='get')
+            {
+            
+                foreach($_GET as $key => $value)
                 {
-                    $body[$key] = filter_input(INPUT_GET , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-                }else
-                {
-                    $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                    if(is_array($value))
+                    {
+                        $body[$key] = filter_input(INPUT_GET , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                    }else
+                    {
+                        $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                    }
                 }
             }
-        }
 
-        if( $this->getMethod() === 'post')
-        {
-            foreach($_POST as $key => $value)
+            if( $this->getMethod() === 'post')
             {
-              
-                if(is_array($value))
+                foreach($_POST as $key => $value)
                 {
-                    $body[$key] = filter_input(INPUT_POST , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-                }else
-                {
-                    $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                
+                    if(is_array($value))
+                    {
+                        $body[$key] = filter_input(INPUT_POST , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                    }else
+                    {
+                        $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                    }
                 }
+            
             }
-           
+        
+            return $body;
         }
+        public function getFiles()
+        {
+            $files = [];
     
-        return $body;
+            if ($this->getMethod() === 'post') {
+                $files = $_FILES;
+            }
+    
+            return $files;
+        }
     }
-}

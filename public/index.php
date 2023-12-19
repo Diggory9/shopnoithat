@@ -5,9 +5,8 @@ use app\controllers\AuthController;
 use app\controllers\AdminController;
 use app\controllers\CategoryController;
 use app\controllers\ProductController;
-use app\controllers\SupplierController;
 use app\controllers\RoleController;
-use app\controllers\UserController;
+use app\controllers\SupplierController;
 use app\model\RegisterModel;
 require_once __DIR__.'/../vendor/autoload.php';
 require_once '../configs/db.php';
@@ -47,6 +46,7 @@ $app->router->get('/admin/category/remove',[CategoryController::class,'remove'])
 $app->router->get('/admin/supplier',[SupplierController::class,'index']);
 $app->router->get('/admin/supplier/add',[SupplierController::class,'add']);
 $app->router->post('/admin/supplier/add',[SupplierController::class,'add']);
+
 $app->router->get('/admin/supplier/edit',[SupplierController::class,'edit']);
 $app->router->post('/admin/supplier/edit',[SupplierController::class,'edit']);
 $app->router->get('/admin/supplier/remove',[SupplierController::class,'remove']);
@@ -59,12 +59,14 @@ $app->router->get('/admin/role/edit',[RoleController::class,'edit']);
 $app->router->post('/admin/role/edit',[RoleController::class,'edit']);
 $app->router->get('/admin/role/remove',[RoleController::class,'remove']);
 
-//user
-$app->router->get('/admin/user',[UserController::class,'index']);
-$app->router->get('/admin/user/add',[UserController::class,'add']);
-$app->router->post('/admin/user/add',[UserController::class,'add']);
-$app->router->get('/admin/user/edit',[UserController::class,'edit']);
-$app->router->post('/admin/user/edit',[UserController::class,'edit']);
-$app->router->get('/admin/user/remove',[UserController::class,'remove']);
+// product admin
+$app->router->get('/admin/product',[ProductController::class,'productIndexAdmin']);
+$app->router->get('/admin/product/add',[ProductController::class,'productAddAdmin']);
+$app->router->post('/admin/product/add',[ProductController::class,'productAddAdmin']);
+$app->router->get('/admin/product/detail',[ProductController::class,'productDetailAdmin']);
+$app->router->get('/admin/product/edit',[ProductController::class,'productEditAdmin']);
+$app->router->get('/admin/product/removeImg',[ProductController::class,'removeImg']);
+
+
 
 $app->run();

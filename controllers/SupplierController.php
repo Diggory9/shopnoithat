@@ -19,12 +19,12 @@ use app\models\Supplier;
 
         public function add(Request $request)
         {
-            $supplier = new Supplier(); 
+            $supplier = new Supplier();
             if ($request->isPost())
             {
                 $supplier->loadData($request->getBody());
                 echo '<pre>';
-                //var_dump($supplier);
+                var_dump($supplier);
                 echo '</pre>';
                 if ($supplier->validate() && $supplier->insertData())
                 {
@@ -48,7 +48,7 @@ use app\models\Supplier;
             {
                 $supplier->loadData($request->getBody());
                 echo '<pre>';
-                //var_dump($supplier);
+                var_dump($supplier);
                 echo '</pre>';
                 if ($supplier->validate() && $supplier->upateSupplier(['supplier_name'=>$supplier->supplier_name,
                 'contact_email'=>$supplier->contact_email, 'supplier_phone'=>$supplier->supplier_phone,

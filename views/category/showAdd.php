@@ -12,11 +12,11 @@
           <?php echo $model->getFirstError('category_name'); ?>
         </div>
       </div>
-
+      <!-- Password input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="form2Example2">Mô tả</label>
-          <input name="category_description" id="" title="Mô tả sản phẩm" cols="1" rows="3" class="form-control <?php echo $model->hasError('category_description') ? 'is-invalid' : ''; ?>">
-          <?php echo !empty($model->category_description) ? $model->category_description : ''; ?></input>
+          <textarea name="category_description" id="" title="Mô tả sản phẩm" cols="1" rows="3" class="form-control <?php echo $model->hasError('category_description') ? 'is-invalid' : ''; ?>">
+          <?php echo !empty($model->category_description) ? $model->category_description : ''; ?></textarea>
         <div class="invalid-feedback">
           <?php echo $model->getFirstError('category_description'); ?>
         </div>

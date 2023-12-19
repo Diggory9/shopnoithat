@@ -68,8 +68,10 @@ class Category extends DbModel
         }
       
     }
-
-
+    public function getCategoryById($id)
+    {
+        return self::findOne(['category_id'=>$id]);
+    }
 }
 
 

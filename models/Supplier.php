@@ -65,12 +65,6 @@ use Exception;
             }
             return self::save(['supplier_name','contact_email','supplier_phone','supplier_address']);
         }
-
-        public function getSupplierById($id)
-        {
-            return self::findOne(['supplier_id'=>$id]);
-        }
-
         public function upateSupplier($attribute, $where)
         {
             return self::update($attribute, $where);
@@ -79,6 +73,12 @@ use Exception;
         public function removeSupplierById($id)
         {
             return self::remove(['supplier_id'=>$id]);
+        }
+        public function getSupplierById($id)
+        {
+            if(empty($id))
+                return null;
+            return self::findOne(['supplier_id'=>$id]);
         }
     }
 

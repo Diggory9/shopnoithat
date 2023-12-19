@@ -13,7 +13,7 @@
           <?php echo $model->getFirstError('category_name'); ?>
         </div>
       </div>
-
+      <!-- Password input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="form2Example2">Mô tả</label>
           <textarea name="category_description" id="" cols="1" class="form-control <?php echo $model->hasError('category_description') ? 'is-invalid' : ''; ?>">
