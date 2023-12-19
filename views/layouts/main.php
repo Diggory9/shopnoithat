@@ -38,7 +38,7 @@ use app\core\Application;
 	<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 
-		<a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+		<a class="navbar-brand" href="/">Furni<span>.</span></a>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
 			aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,13 +48,13 @@ use app\core\Application;
 		<div class="collapse navbar-collapse" id="navbarsFurni">
 			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="index.html">Home</a>
+					<a class="nav-link" href="/">Home</a>
 				</li>
-				<li><a class="nav-link" href="shop.html">Shop</a></li>
-				<li><a class="nav-link" href="about.html">About us</a></li>
-				<li><a class="nav-link" href="services.html">Services</a></li>
+				<li><a class="nav-link" href="/product">Product</a></li>
+				<li><a class="nav-link" href="/">About us</a></li>
+				<li><a class="nav-link" href="/">Services</a></li>
 				<li><a class="nav-link" href="/profile">Profile</a></li>
-				<li><a class="nav-link" href="contact.html">Contact us</a></li>
+				<li><a class="nav-link" href="/">Contact us</a></li>
 			</ul>
 			
 			<?php if (Application::$app->isAdmin()): ?>

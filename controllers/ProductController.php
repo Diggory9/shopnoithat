@@ -40,7 +40,7 @@ class ProductController extends Controller
             }
         }
         echo '<pre>';
-        var_dump($data);
+        //var_dump($data);
         echo '</pre>';
         return $this->render('product_page',['data'=>$data]);
     }

@@ -2,7 +2,7 @@
     <div class="row justify-content-center align-items-center g-2 mt-5">
         <h2>Add role</h2>
     </div>
-    <form action="add" method="post">
+    <form action="add" method="post" class="col-4">
     <div class="form-outline mb-4">
         <label class="form-label" for="form2Example1">Role name</label>
         <input type="text" id="form2Example1" name="role_name"

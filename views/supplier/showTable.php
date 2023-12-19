@@ -37,7 +37,7 @@
                         <td><?php echo $value->supplier_address?></td>
                         <td>
                             <a href="/admin/supplier/edit?id=<?php echo $value->supplier_id ?>"
-                                class="link-underline btn btn-primary btn-sm rounded" title="edit category"><i
+                                class="link-underline btn btn-primary btn-sm rounded" title="edit supplier"><i
                                     class="fa-regular fa-pen-to-square"></i></a>&nbsp;
                             <a href="#deleteModal<?php echo $value->supplier_id ?>" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal<?php echo $value->supplier_id ?>" class="link-underline btn btn-primary btn-sm rounded"
@@ -48,12 +48,12 @@
                                     <div class="modal-content">
 
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Xóa danh mục <?php echo $value->supplier_name ?> </h5>
+                                            <h5 class="modal-title">Xóa nhà cung cấp <?php echo $value->supplier_name ?> </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4>Bạn có chắc xóa danh mục <?php echo $value->supplier_name ?></h4>
+                                            <h4>Bạn có chắc xóa nhà cung cấp <?php echo $value->supplier_name ?></h4>
                                             <p class="text-danger">Thao tác này sẽ không được hoàn tác nếu đã thực
                                                 hiện!. </p>
                                         </div>
