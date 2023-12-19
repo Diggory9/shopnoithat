@@ -73,7 +73,6 @@ abstract class DbModel extends Model
         }catch(Exception $e)
         {
             echo $e->getMessage();
-            exit;
             return false;
         }
     }
@@ -104,6 +103,7 @@ abstract class DbModel extends Model
         $attribute = array_keys($where);// get key;
         $whereSql = implode('and', array_map(fn($attr)=> "$attr = :$attr",$attribute)); 
         $sql = "SELECT * FROM $tableName WHERE $whereSql";
+        
         $stmt = self::prepare($sql);
         foreach($where as $key => $value)
         {
