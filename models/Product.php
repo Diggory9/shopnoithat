@@ -78,8 +78,6 @@ class Product extends DbModel
        {
             $this->addErrors(self::RULE_UNIQUE,"Tên sản phẩm bị trùng");
             return false;
-       }              
-
         $check = true;
         $table = $this->tableName();
         $attributes = ['product_name','product_des','product_price','product_stock_quantity','category_id','supplier_id'];

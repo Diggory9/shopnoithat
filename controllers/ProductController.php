@@ -138,7 +138,10 @@ class ProductController extends Controller
         if($pro_image->removeImg($imgId))
         {
             Application::$app->session->setFlash('success', 'Xóa thành công!');
+
+
             unlink(__DIR_ROOT."public/images/uploads/" . $imgName);
+
             Application::$app->response->redirect('/admin/product/edit?id='.$idPro);
             
         } else
@@ -147,6 +150,7 @@ class ProductController extends Controller
             $this->setLayout('admin');
             Application::$app->response->redirect('/admin/product/edit?id='.$idPro);
         }
+
     }
     public function addImage(Request $request)
     {

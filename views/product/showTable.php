@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mb-5 mt-5">
         <div class="col-6">
-            <h2 class="text-primary">Nhà cung cấp</h2>
+            <h2 class="text-primary">Trang sản phẩm</h2>
         </div>
         <div class="col-6 text-end">
             <a href="/admin/product/add" class="btn btn-primary rounded">Create</a>
