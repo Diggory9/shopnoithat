@@ -29,8 +29,8 @@ class AuthController extends Controller
             if( $userLogin->validate() && $userLogin->login())
             {
                 Application::$app->session->setFlash('success','Login success!'); 
-             
-                Application::$app->response->redirect('/');
+                $currentUrl = $_SERVER['HTTP_REFERER'];
+                Application::$app->response->redirect('$currentUrl');
             }
          
             return $this->render('login',['models'=>$userLogin]);
@@ -54,7 +54,8 @@ class AuthController extends Controller
                 //Lấy dữ liệu vừa đăng ký qua email
                 $user = $registerModel->getUserByEmail();
                 Application::$app->login($user);
-                Application::$app->response->redirect('/');
+                $currentUrl = $_SERVER['HTTP_REFERER'];
+                Application::$app->response->redirect($currentUrl);
                 
             }
 

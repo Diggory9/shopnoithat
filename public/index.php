@@ -1,4 +1,5 @@
 <?php
+use app\controllers\CartController;
 use app\core\Application;
 use app\controllers\SiteController;
 use app\controllers\AuthController;
@@ -31,7 +32,10 @@ $app->router->get('/profile',[AuthController::class,'profile']);
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
 $app->router->get('/product',[ProductController::class,'showProduct']);
 
-
+// cart
+$app->router->get('/add-cart',[CartController::class,'addCart']);
+$app->router->get('/show-cart',[CartController::class,'index']);
+$app->router->get('/cart-remove',[CartController::class,'remove']);
 
 
 $app->router->get('/admin',[AdminController::class,'home']);

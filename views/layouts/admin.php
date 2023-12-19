@@ -1,4 +1,7 @@
+<?php
+use app\core\Application;
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +12,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - SB Admin</title>
-    <link href="<?php echo BASE__URL?>css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="<?php
+
+
+
+ echo BASE__URL?>css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="<?php echo BASE__URL?>css/admin.css" rel="stylesheet" />
     <link href="<?php echo BASE__URL?>css/style.css" rel="stylesheet"/>
@@ -130,7 +137,17 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
+        <?php
+		if (!empty(Application::$app->session->getFlash('success'))): ?>
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				<strong>Well done!</strong> <?php echo Application::$app->session->getFlash('success')?>
+			</div>
+
+			<?php Application::$app->session->removeFlash('success')?>
+		<?php endif; ?>
             {{content}}
+            
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
