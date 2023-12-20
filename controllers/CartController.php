@@ -36,7 +36,6 @@ class CartController extends Controller
         $reqGet = $request->getBody();
         $productId  = $reqGet['id']; 
         $this->cart->addProduct($productId);
-       
         $currentUrl = $_SERVER['HTTP_REFERER'];
        
         Application::$app->response->redirect($currentUrl);

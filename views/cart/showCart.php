@@ -87,6 +87,8 @@
                     </div>
                     <h5 class="text-uppercase mb-3">Shipping</h5>
 
+                  <button type="button" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark">Thanh toán</button>
                     <div class="mb-4 pb-2">
                       <select class="select">
                         <option value="1">Standard-Delivery- 50.000 đ</option>

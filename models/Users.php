@@ -19,8 +19,6 @@ use Exception;
         public string $user_password;
         public int $status;
        
-
-
         public function rules()
         {
             return [

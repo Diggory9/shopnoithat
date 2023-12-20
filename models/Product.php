@@ -135,6 +135,11 @@ class Product extends DbModel
     {
         return self::update($attribute, $where);
     }
+
+    public function removeProById($id)
+        {
+            return self::remove(['product_id'=>$id]);
+        }
     public function showProductByCategory($categoryId, $sizepage = 12, $page = 1)
     {
         try
@@ -156,5 +161,6 @@ class Product extends DbModel
             throw new SqlException();
         }
     }
+
 }
 ?>

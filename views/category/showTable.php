@@ -17,6 +17,7 @@
                     <th class="col">#</th>
                     <th class="col">Mã</th>
                     <th class="col">Danh mục</th>
+               
                     <th class="col">Mô tả</th>
                     <th class="col">Thao tác</th>
 
@@ -32,6 +33,7 @@
                         
                         <td><?php echo $value->category_id ?></td>
                         <td><?php echo $value->category_name ?></td>
+                     
                         <td><p style="width:600px"><?php echo $value->category_description ?> </p></td>
                         <td>
                             <a href="/admin/category/edit?id=<?php echo $value->category_id ?>"

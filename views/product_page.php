@@ -8,7 +8,7 @@
                     foreach($categoris as $value)
                     {
                         ?>
-                             <div class="d-flex justify-content-between mt-2"> <span><a href="" class="text-decoration-none"><?php echo $value->category_name;?> </a></span> <span>23</span> </div>
+                             <div class="d-flex justify-content-between mt-2"> <span><a href="" class="text-decoration-none"><?php echo $value->category_name;?> </a></span> <span>  </span> </div>
                         <?php
                     }
                     ?>

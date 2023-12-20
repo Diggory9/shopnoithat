@@ -91,6 +91,25 @@ class ProductController extends Controller
         $this->setLayout('admin');
         return $this->render('product/showAdd', ['model' => $this->product, 'categoris' => $categoris, 'suppliers' => $suppliers]);
     }
+    public function remove(Request $request)
+    {
+        $pro = new Product();
+        if ($request->isGet())
+        {
+           $reqGet = $request->getBody();
+            if ($pro->removeProById($reqGet['id']))
+            {
+                
+                Application::$app->session->setFlash('success', 'drop data user successfuly!');
+                Application::$app->response->redirect('/admin/product');
+            }
+            else
+            {
+                Application::$app->session->setFlash('error', 'Không thể xóa!');
+                Application::$app->response->redirect('/admin/product');
+            }
+        }
+    }
 
     public function productDetailAdmin(Request $request)
     {

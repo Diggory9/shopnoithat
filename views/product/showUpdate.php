@@ -45,7 +45,6 @@
                     foreach ($categoris as $value)
                     {
                         ?>
-
                         <option <?php if ($value->category_id === $model->category->category_id)
                             echo 'selected' ?>
                                 value="<?php echo $value->category_id ?>"><?php echo $value->category_name ?></option>
