@@ -36,6 +36,11 @@ $app->router->get('/product',[ProductController::class,'showProduct']);
 $app->router->get('/add-cart',[CartController::class,'addCart']);
 $app->router->get('/show-cart',[CartController::class,'index']);
 $app->router->get('/cart-remove',[CartController::class,'remove']);
+$app->router->get('/cart-update',[CartController::class,'update']);
+$app->router->get('/checkout',[CartController::class,'checkout']);
+$app->router->post('/checkout',[CartController::class,'checkout']);
+$app->router->get('/checkout-success',[CartController::class,'showSuccess']);
+
 
 
 $app->router->get('/admin',[AdminController::class,'home']);

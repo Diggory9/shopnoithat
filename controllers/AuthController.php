@@ -29,8 +29,9 @@ class AuthController extends Controller
             if( $userLogin->validate() && $userLogin->login())
             {
                 Application::$app->session->setFlash('success','Login success!'); 
-                $currentUrl = $_SERVER['HTTP_REFERER'];
-                Application::$app->response->redirect('$currentUrl');
+                
+                //$backUrl = $_SERVER['HTTP_REFERER'];
+                Application::$app->response->redirect('/');
             }
          
             return $this->render('login',['models'=>$userLogin]);
@@ -55,7 +56,7 @@ class AuthController extends Controller
                 $user = $registerModel->getUserByEmail();
                 Application::$app->login($user);
                 $currentUrl = $_SERVER['HTTP_REFERER'];
-                Application::$app->response->redirect($currentUrl);
+                Application::$app->response->redirect('/');
                 
             }
 
