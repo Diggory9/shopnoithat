@@ -25,7 +25,7 @@ use app\models\Users;
             {
                 $user->loadData($request->getBody());
                 echo '<pre>';
-                var_dump($user);
+                //var_dump($user);
                 echo '</pre>';
                 if ($user->validate() && $user->insertData())
                 {

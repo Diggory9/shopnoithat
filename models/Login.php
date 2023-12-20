@@ -43,7 +43,5 @@ class Login extends Model
         return true;
         
     }
-    
-
 
 }

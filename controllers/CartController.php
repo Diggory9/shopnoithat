@@ -33,7 +33,7 @@ class CartController extends Controller
         $this->cart->addProduct($productId);
         // echo '<pre>';
 
-        // var_dump($_SESSION['cart']);
+         var_dump($_SESSION['cart']);
         // echo '</pre>';
         // exit;
         $currentUrl = $_SERVER['HTTP_REFERER'];

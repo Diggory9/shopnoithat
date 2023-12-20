@@ -138,5 +138,9 @@ class Product extends DbModel
     {
         return self::update($attribute, $where);
     }
+    public function removeProById($id)
+        {
+            return self::remove(['product_id'=>$id]);
+        }
 }
 ?>

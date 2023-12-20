@@ -15,13 +15,10 @@ class Category extends DbModel
     public function rules()
     {
         return [
-            'category_name' => [self::RULE_REQUIRED],
+            'category_name' => [self::RULE_REQUIRED,[self::RULE_MIN,'min'=> 4]] ,
             'category_description' => [self::RULE_REQUIRED,],
-
         ];
     }
-
-
     public function tableName(): string
     {
         return $this->table;
@@ -68,6 +65,7 @@ class Category extends DbModel
         }
       
     }
+    
     public function getCategoryById($id)
     {
         return self::findOne(['category_id'=>$id]);

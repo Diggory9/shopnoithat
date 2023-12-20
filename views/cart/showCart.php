@@ -9,7 +9,7 @@
                 <div class="p-5">
                   <div class="d-flex justify-content-between align-items-center mb-5">
                     <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                    <h6 class="mb-0 text-muted">3 items</h6>
+                    
                   </div>
                   <hr class="my-4">
                     <?php
@@ -97,7 +97,7 @@
                   </div>
 
                   <button type="button" class="btn btn-dark btn-block btn-lg"
-                    data-mdb-ripple-color="dark">Register</button>
+                    data-mdb-ripple-color="dark">Thanh toán</button>
 
                 </div>
               </div>

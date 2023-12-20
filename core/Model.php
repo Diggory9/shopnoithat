@@ -11,7 +11,6 @@ abstract class Model
     public const RULE_UNIQUE ='unique';
     public const RULE_PHONE ='phone';
 
-
     public function loadData($data)
     {
      
