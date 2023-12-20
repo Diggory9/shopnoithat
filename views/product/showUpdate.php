@@ -4,7 +4,7 @@
         <h2>Sửa sản phẩm</h2>
     </div>
     <form action="update" method="post" enctype="multipart/form-data">
-    <input type="text" hidden name="product_id" value="<?php echo $model->product_id; ?>">
+        <input type="text" hidden name="product_id" value="<?php echo $model->product_id; ?>">
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example1">Tên sản phẩm</label>
             <input type="text" id="form2Example1" name="product_name"
@@ -86,7 +86,17 @@
             <a class="btn btn-primary rounded" href="/admin/product">Trở về</a>
         </div>
     </form>
-
+    <h2>Thêm hình ảnh</h2>
+    <form action="addImg" method="post" enctype="multipart/form-data">
+        <input type="text" hidden name="id" value="<?php echo $model->product_id; ?>">
+        <div class="form-outline mb-4">
+            <input type="file" class="form-control" name="images[]" id="validatedCustomFile">
+        </div>
+        <div class="form-outline mb-4">
+            <input class="btn btn-primary rounded" type="submit" value="Thêm" />
+        </div>
+    </form>
+</div>
 
 <div class="container">
     <div class="row g-2">
@@ -100,7 +110,6 @@
                     <div class="text-center"> <img src="<?php echo BASE__URL . 'images/uploads/' . $item->image_path; ?>"
                             width="200" height="200"> </div>
                     <a class="btn btn-primary rounded mt-4"
-
                         href="/admin/product/removeImg?idPro=<?php echo $model->product_id ?>&idImg=<?php echo $item->image_id ?>">Remove</a>
 
                 </div>
