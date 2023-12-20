@@ -201,4 +201,11 @@ class ProductController extends Controller
         }
     }
 
+    public function showCateory(Request $request)
+    {
+        $reqGet = $request->getBody();
+        $category_id = $reqGet['id'];
+        
+    }
+
 }
