@@ -57,9 +57,6 @@ class Product extends DbModel
             FROM product
             LIMIT ' . $sizepage . ' OFFSET ' . $offset;
             $stm = $this->prepare($sql);
-
-            //$stm->bindValue(":cate", $category_id);
-            //$stm->bindValue(":size", $sizepage);
             $stm->execute();
             $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
             $img = new ProductImage();
@@ -138,9 +135,32 @@ class Product extends DbModel
     {
         return self::update($attribute, $where);
     }
+
     public function removeProById($id)
         {
             return self::remove(['product_id'=>$id]);
         }
+    public function showProductByCategory($categoryId, $sizepage = 12, $page = 1)
+    {
+        try
+        {
+            $offset = ($page - 1) * $sizepage;
+            $sql = 'SELECT *
+            FROM product
+            LIMIT ' . $sizepage . ' OFFSET ' . $offset;
+            $stm = $this->prepare($sql);
+
+            $stm->bindValue(":cate", $categoryId);
+            $stm->execute();
+            $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
+            $img = new ProductImage();
+            return $data;
+        }
+         catch (Exception $e)
+        {
+            throw new SqlException();
+        }
+    }
+
 }
 ?>

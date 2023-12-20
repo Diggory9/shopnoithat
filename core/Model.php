@@ -33,7 +33,8 @@ abstract class Model
         
         foreach($this->rules() as $attribute => $rules)
         {
-            $value = $this->{$attribute};
+            $value = trim($this->{$attribute});
+
             foreach($rules as $rule)
             {
                 $ruleName = $rule;
