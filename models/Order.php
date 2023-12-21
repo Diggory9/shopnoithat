@@ -35,7 +35,19 @@ class Order extends DbModel
             'consignee_add' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 4]],
         ];
     }
-
+    public function getDataByUserId($id)
+    {
+        try{
+            $sql = "SELECT * FROM `user_order` WHERE `user_id` = $id; ";
+            $stm = self::prepare($sql);
+            $stm->execute();
+            $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+            return $data;
+        }catch (Exception $e)
+        {
+            Application::$app->session->setFlash('error', 'Error !');
+        }
+    }
     public function tableName(): string
     {
         return "user_order";
@@ -48,7 +60,19 @@ class Order extends DbModel
     {
         return 'order_id';
     }
-
+    public function selectAll()
+    {
+        try{
+            $sql = "select * from user_order";
+            $stm = self::prepare($sql);
+            $stm->execute();
+            $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+            return $data;
+        }catch (Exception $e)
+        {
+            Application::$app->session->setFlash('error', 'Error !');
+        }
+    }
     public function addOrderNew()
     {
         try{
