@@ -18,7 +18,10 @@ use Exception;
         public  $user_address;
         public string $user_password;
         public int $status;
-       
+
+        //
+      
+        //
         public function rules()
         {
             return [
@@ -29,7 +32,7 @@ use Exception;
                 'user_address'=>[self::RULE_REQUIRED],
             ];
         }
-    
+
     
         public function tableName(): string
         {

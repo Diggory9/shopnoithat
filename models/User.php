@@ -17,9 +17,16 @@ class User extends DbModel
 
 
 
-    public function __construct(){
+ 
 
-
+    public function __construct()
+    {
+        
+        if (!isset($_SESSION['user']))
+        {
+            $_SESSION['user'] = array();
+        }
+        
     }
 
     public function tableName(): string
@@ -47,7 +54,10 @@ class User extends DbModel
     {
         return $this->findOne(['user_email'=>$this->user_email]);
     }
-   
+    public function getUserById($id)
+    {
+        return self::findOne(['user_id'=>$id]);
+    }
     public function rules()
     {
         return [

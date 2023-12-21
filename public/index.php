@@ -29,6 +29,16 @@ $app->router->post('/register',[AuthController::class,'register']);
 $app->router->get('/logout',[AuthController::class,'logout']);
 $app->router->get('/profile',[AuthController::class,'profile']);
 
+//profile
+$app->router->get('/profile',[UserController::class,'showProfile']);
+$app->router->get('/profile/editProfile',[UserController::class,'editProfile']);
+$app->router->post('/profile/editProfile',[UserController::class,'editProfile']);
+
+
+
+
+
+
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
 $app->router->get('/product',[ProductController::class,'showProduct']);
@@ -41,8 +51,6 @@ $app->router->get('/cart-update',[CartController::class,'update']);
 $app->router->get('/checkout',[CartController::class,'checkout']);
 $app->router->post('/checkout',[CartController::class,'checkout']);
 $app->router->get('/checkout-success',[CartController::class,'showSuccess']);
-
-
 
 $app->router->get('/admin',[AdminController::class,'home']);
 // category
