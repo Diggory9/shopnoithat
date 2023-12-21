@@ -89,11 +89,18 @@ class OrderController extends Controller
             $this->order->loadData($reqPost);
             $current_time = date("Y-m-d H:i:s"); // lấy thời gian hiện tại
             $this->order->order_date = $current_time;
-            if($this->order->validate() && $this->order->addOrderNew($_SESSION['cartAdmin']))
+            if($this->order->validate())
             {
              
-                Application::$app->session->setFlash('success', 'Đơn hàng đã thêm thành công');
-                Application::$app->response->redirect('/admin/order');
+                if($this->order->addOrderNew($_SESSION['cartAdmin']))
+                {
+                    Application::$app->session->setFlash('success', 'Đơn hàng đã thêm thành công');
+                    Application::$app->response->redirect('/admin/order');
+                }else{
+                 
+                    return $this->render('order/showAdd',['model'=>$this->order]);
+                }
+              
             }else{
 
                

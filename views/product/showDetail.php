@@ -41,7 +41,7 @@
                         <h4>Giá sản phẩm:</h4>
                         <span>
                             <?php
-                            $priceFormat = number_format($product->product_price, 2, ',', '.');
+                            $priceFormat = number_format($product->product_price, 0, ',', '.');
                             echo $priceFormat . ' đ'; ?>
                         </span>
                     </div>
@@ -49,7 +49,7 @@
                         <h4>Số lượng:</h4>
                         <span>
                             <?php
-                            $quantityFormat = number_format($product->product_stock_quantity, 2, ',', '.');
+                            $quantityFormat = number_format($product->product_stock_quantity, 0, ',', '.');
                             echo $quantityFormat . ' cái'; ?>
                         </span>
                     </div>
@@ -76,8 +76,8 @@
                     </div>
 
                     <div class="buttons d-flex flex-row mt-5 gap-5">
-                        <a href="/admin/product" class="btn btn-primary">Trở về</a>
-                        <a class="btn btn-primary">Update sản phẩm</a>
+                        <a href="/admin/product"><button  class="btn btn-primary">Trở về</button></a>
+                        <a href="/admin/product/edit?id=<?php echo $product->product_id;?>"><button  class="btn btn-primary">Chỉnh sửa thông tin sản phẩm</button></a>
                     </div>
                 </div>
             </div>

@@ -54,6 +54,8 @@ class Order extends DbModel
     {
         try
         {
+
+            Application::$app->db->getConnection()->beginTransaction();
             $table = $this->tableName();
             $attributes = ['order_date', 'total_amount', 'consignee_name', 'consignee_phone', 'consignee_add', 'user_id'];
             $params = array_map(fn($attr) => ":$attr", $attributes);
@@ -69,20 +71,32 @@ class Order extends DbModel
             $items = &$session;
             foreach ($items as $key => $value)
             {
+
+                $product = new Product();
+                $product = $product->getProductById($key);
+                if($product->product_stock_quantity < $value['sl'])
+                {
+                    Application::$app->session->setFlash('success', 'Đơn hàng đã thêm thành công');
+                    Application::$app->db->getConnection()->rollBack();
+                    return false;
+                }
                 $detail = new DetailOrder();
                 $detail->order_id = $this->order_id;
                 $detail->product_id = $key;
                 $detail->quantity = $value['sl'];
                 $detail->price = $value['product_price'];
+              
                 if (!$detail->insertDetail())
                 {
                     return false;
                 }
                 unset($items[$key]);
             }
+            Application::$app->db->getConnection()->commit();
             return true;
         } catch (Exception $e)
         {
+            Application::$app->db->getConnection()->rollBack();
             return false;
         }
 

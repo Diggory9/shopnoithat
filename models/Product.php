@@ -69,28 +69,36 @@ class Product extends DbModel
     }
     public function saveProduct($file, $uploadDirectory)
     {
-        $check = true;
-        $d = self::findOne(['product_name' => $this->product_name]);
-        if (!empty($d))
+        try{
+            $check = true;
+            $d = self::findOne(['product_name' => $this->product_name]);
+            if (!empty($d))
+            {
+                $this->addErrors(self::RULE_UNIQUE, "Tên sản phẩm bị trùng");
+                return false;
+            }
+            Application::$app->db->getConnection()->beginTransaction();
+            $table = $this->tableName();
+            $attributes = ['product_name', 'product_des', 'product_price', 'product_stock_quantity', 'category_id', 'supplier_id'];
+            $params = array_map(fn($attr) => ":$attr", $attributes);
+    
+            $stmt = self::prepare("INSERT INTO $table(" . implode(',', $attributes) . ") VALUES(" . implode(',', $params) . ")");
+            foreach ($attributes as $attribute)
+            {
+                $stmt->bindValue(":$attribute", $this->{$attribute});
+            }
+            $stmt->execute();
+            $lastInsertedId = Application::$app->db->getConnection()->lastInsertId();
+            $this->product_id = $lastInsertedId;
+            $check = $this->addImages($file, $uploadDirectory);
+            Application::$app->db->getConnection()->commit();
+            return $check;
+        }catch(Exception $e)
         {
-            $this->addErrors(self::RULE_UNIQUE, "Tên sản phẩm bị trùng");
+            Application::$app->db->getConnection()->rollBack();
             return false;
         }
-        $table = $this->tableName();
-        $attributes = ['product_name', 'product_des', 'product_price', 'product_stock_quantity', 'category_id', 'supplier_id'];
-        $params = array_map(fn($attr) => ":$attr", $attributes);
-
-        $stmt = self::prepare("INSERT INTO $table(" . implode(',', $attributes) . ") VALUES(" . implode(',', $params) . ")");
-        foreach ($attributes as $attribute)
-        {
-            $stmt->bindValue(":$attribute", $this->{$attribute});
-        }
-        $stmt->execute();
-        $lastInsertedId = Application::$app->db->getConnection()->lastInsertId();
-        $this->product_id = $lastInsertedId;
-        $check = $this->addImages($file, $uploadDirectory);
-
-        return $check;
+       
     }
     public function addImages($file, $uploadDirectory)
     {
