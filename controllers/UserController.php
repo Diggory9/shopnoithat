@@ -24,7 +24,6 @@ use app\models\Users;
             echo '<pre>';
             //var_dump($user);
             echo '</pre>';
-         
             return $this->render('profile/showProfile',['model'=>$user]);
 
         }
@@ -40,11 +39,12 @@ use app\models\Users;
                 {
                     $user->user_password = md5($user->user_password);
                 }
-                $attribute = ['user_email'=>$user->user_email,
+                $attribute = [
                 'user_firstname'=>$user->user_firstname, 'user_lastname'=>$user->user_lastname,
                 'user_phone'=>$user->user_phone,'user_address'=>$user->user_address,
                 'user_password'=>$user->user_password];
 
+                $user->user_email = ' ';  
                 $where =   ['user_id'=>$user->user_id];
                 if ($user->validate() && $user->upateUser($attribute,$where))
                 {
@@ -54,8 +54,8 @@ use app\models\Users;
                 else
                 {
                     Application::$app->session->setFlash('error', 'Error edit data user!');
-                    $this->setLayout('profile');
-                    return $this->render('/profile',['model'=> $user]);
+                    // $this->setLayout('profile');
+                    return $this->render('/profile/editProfile',['model'=> $user]);
                 }
             }
             // lấy dữ liệu từ request
@@ -100,11 +100,12 @@ use app\models\Users;
                 {
                     $user->user_password = md5($user->user_password);
                 }
-                $attribute = ['user_email'=>$user->user_email,
+                $attribute = [
                 'user_firstname'=>$user->user_firstname, 'user_lastname'=>$user->user_lastname,
                 'user_phone'=>$user->user_phone,'user_address'=>$user->user_address,
                 'user_password'=>$user->user_password];
 
+                $user->user_email = ' ';
                 $where =   ['user_id'=>$user->user_id];
                 if ($user->validate() && $user->upateUser($attribute,$where))
                 {

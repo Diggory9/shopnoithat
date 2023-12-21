@@ -19,15 +19,7 @@ class User extends DbModel
 
  
 
-    public function __construct()
-    {
-        
-        if (!isset($_SESSION['user']))
-        {
-            $_SESSION['user'] = array();
-        }
-        
-    }
+   
 
     public function tableName(): string
     {
