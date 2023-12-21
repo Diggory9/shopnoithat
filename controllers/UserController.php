@@ -17,7 +17,53 @@ use app\models\Users;
             return $this->render('user/showTable',['users'=>$dataAll]);
 
         }
+        public function showProfile(Request $request){
+            $u = new User();
+            $id  = $_SESSION['user'];
+            $user = $u->findOne(['user_id'=>$id]);
+            echo '<pre>';
+            //var_dump($user);
+            echo '</pre>';
+            return $this->render('profile/showProfile',['model'=>$user]);
 
+        }
+        public function editProfile(Request $request)
+        {
+            $user = new Users();
+            if ($request->isPost())
+            {
+                $user->loadData($request->getBody());
+                // kiểm tra mk không đổi
+                $userCheck = $user->findOne(['user_id'=>$user->user_id]);
+                if ($userCheck->user_password !== $user->user_password)
+                {
+                    $user->user_password = md5($user->user_password);
+                }
+                $attribute = [
+                'user_firstname'=>$user->user_firstname, 'user_lastname'=>$user->user_lastname,
+                'user_phone'=>$user->user_phone,'user_address'=>$user->user_address,
+                'user_password'=>$user->user_password];
+
+                $user->user_email = ' ';  
+                $where =   ['user_id'=>$user->user_id];
+                if ($user->validate() && $user->upateUser($attribute,$where))
+                {
+                    Application::$app->session->setFlash('success', 'Edit data user successfuly!');
+                    Application::$app->response->redirect('/profile');
+                }
+                else
+                {
+                    Application::$app->session->setFlash('error', 'Error edit data user!');
+                    // $this->setLayout('profile');
+                    return $this->render('/profile/editProfile',['model'=> $user]);
+                }
+            }
+            // lấy dữ liệu từ request
+            $id  = $_SESSION['user'];
+            $user = $user->findOne(['user_id'=>$id]);
+            return $this->render('profile/editProfile',['model'=>$user]);
+
+        }
         public function add(Request $request)
         {
             $user = new Users();
@@ -54,11 +100,12 @@ use app\models\Users;
                 {
                     $user->user_password = md5($user->user_password);
                 }
-                $attribute = ['user_email'=>$user->user_email,
+                $attribute = [
                 'user_firstname'=>$user->user_firstname, 'user_lastname'=>$user->user_lastname,
                 'user_phone'=>$user->user_phone,'user_address'=>$user->user_address,
                 'user_password'=>$user->user_password];
 
+                $user->user_email = ' ';
                 $where =   ['user_id'=>$user->user_id];
                 if ($user->validate() && $user->upateUser($attribute,$where))
                 {

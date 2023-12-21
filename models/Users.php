@@ -18,18 +18,21 @@ use Exception;
         public  $user_address;
         public string $user_password;
         public int $status;
-       
+
+        //
+      
+        //
         public function rules()
         {
             return [
-                'user_email' => [self::RULE_REQUIRED,self::RULE_EMAIL],    
+          
                 'user_firstname' => [self::RULE_REQUIRED],
                 'user_lastname'=>[self::RULE_REQUIRED],
-                'user_phone'=>[self::RULE_REQUIRED],
+                'user_phone'=>[self::RULE_REQUIRED,self::RULE_PHONE],
                 'user_address'=>[self::RULE_REQUIRED],
             ];
         }
-    
+
     
         public function tableName(): string
         {

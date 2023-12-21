@@ -1,14 +1,18 @@
 <section style="background-color: #eee;">
   <div class="container py-5">
+    <div style="margin-bottom: 2rem;" class="row justify-content-center align-items-center g-2 mt-10">
+          <h1>Update profile</h1>
+      </div>
     <div class="row">
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3"><?php echo $model->user_firstname; ?></h5>
+            
             <p class="text-muted mb-4"><?php echo $model->user_address; ?></p>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Update</button>
+              <a href="/profile/editProfile"> <button type="button" class="btn btn-primary">Update</button></a>   
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row justify-content-center align-items-center g-2 mt-5">
-        <h2>Chỉnh sửa user</h2>
+        <h2>Update profile</h2>
     </div>
-    <form action="edit" method="post">
+    <form action="/profile/editProfile" method="post">
         <input name="user_id" value="<?php echo $model->user_id?>" hidden/>
         <div class="form-row row">
             <div class="form-group mb-2 col-md-4">
@@ -60,7 +60,7 @@
 
         <div class="fom-outline mb-4">
             <input class="btn btn-primary rounded" type="submit" value="Submit" />
-            <a class="btn btn-primary rounded" href="/admin/user">Trở về</a>
+            <a class="btn btn-primary rounded" href="/profile">Trở về</a>
         </div>
     </form>
 </div>
