@@ -7,14 +7,14 @@ class Cart
     // Lấy thông tin giỏ hàng từ session
     private $items;
 
-    public function __construct()
+    public function __construct(&$session)
     {
         
-        if (!isset($_SESSION['cart']))
+        if (!isset($session))
         {
-            $_SESSION['cart'] = array();
+            $session = array();
         }
-        $this->items = &$_SESSION['cart'];
+        $this->items = &$session;
     }
 
    

@@ -94,5 +94,8 @@ $app->router->get('/admin/order',[OrderController::class, 'index']);
 $app->router->get('/admin/order/detail',[OrderController::class, 'showDetail']);
 $app->router->get('/admin/order/update-status',[OrderController::class,'updateStatus']);
 $app->router->get('/admin/order/add',[OrderController::class,'adminAddOrder']);
-
+$app->router->get('/admin/order/add-cart',[OrderController::class,'addCart']);
+$app->router->get('/admin/order/cart-update',[OrderController::class,'update']);
+$app->router->get('/admin/order/cart-remove',[OrderController::class,'remove']);
+$app->router->post('/admin/order/add',[OrderController::class,'adminAddOrder']);
 $app->run();

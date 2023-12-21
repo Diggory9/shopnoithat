@@ -50,7 +50,7 @@ class Order extends DbModel
         return 'order_id';
     }
 
-    public function addOrderNew()
+    public function addOrderNew(&$session)
     {
         try
         {
@@ -66,7 +66,7 @@ class Order extends DbModel
             $stmt->execute();
             $lastInsertedId = Application::$app->db->getConnection()->lastInsertId();
             $this->order_id = $lastInsertedId;
-            $items = &$_SESSION['cart'];
+            $items = &$session;
             foreach ($items as $key => $value)
             {
                 $detail = new DetailOrder();

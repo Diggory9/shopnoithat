@@ -1,5 +1,7 @@
 <?php
-    $status =[0=>'đơn hàng mới', 1=>'chờ xuất hàng',2=>'đang giao hàng',3=>'đã giao hàng', 4=>'đơn hàng đã hủy']
+
+$status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ xuất hàng', 3 => 'Chờ giao hàng', 4 => 'Đã giao hàng', 5 => 'Hủy đơn hàng']
+
 ?>
 
 <div class="container">
