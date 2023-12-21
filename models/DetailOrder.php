@@ -8,6 +8,7 @@
         public $order_id;
         public $quantity;
         public $price;
+        public $product_name;
 
         public function rules()
         {
@@ -35,7 +36,10 @@
         {
             return self::save(['product_id', 'order_id','quantity','price']);
         }
-    
+        public function getDetailByOrderId($id)
+        {
+            return self::find(['order_id'=>$id]);
+        }
     }
 
 

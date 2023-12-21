@@ -5,6 +5,7 @@ use app\controllers\SiteController;
 use app\controllers\AuthController;
 use app\controllers\AdminController;
 use app\controllers\CategoryController;
+use app\controllers\OrderController;
 use app\controllers\ProductController;
 use app\controllers\RoleController;
 use app\controllers\SupplierController;
@@ -88,5 +89,10 @@ $app->router->post('/admin/user/edit',[UserController::class,'edit']);
 $app->router->post('/admin/product/addImg',[ProductController::class,'addImage']);
 $app->router->post('/admin/product/update',[ProductController::class,'updateProduct']);
 
+// order
+$app->router->get('/admin/order',[OrderController::class, 'index']);
+$app->router->get('/admin/order/detail',[OrderController::class, 'showDetail']);
+$app->router->get('/admin/order/update-status',[OrderController::class,'updateStatus']);
+$app->router->get('/admin/order/add',[OrderController::class,'adminAddOrder']);
 
 $app->run();

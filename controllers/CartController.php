@@ -11,6 +11,7 @@ use app\models\Login;
 use app\models\Order;
 use app\models\User;
 use app\core\middlewares\AuthMiddleware;
+use app\models\Users;
 
 class CartController extends Controller
 {
@@ -24,12 +25,9 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-        echo '<pre>';
-        var_dump($_SESSION['cart']);
-        echo '</pre>';
-
+      
+     
         return $this->render('cart/showCart');
-
     }
     public function addCart(Request $request)
     {
