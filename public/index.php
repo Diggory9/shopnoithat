@@ -5,6 +5,7 @@ use app\controllers\SiteController;
 use app\controllers\AuthController;
 use app\controllers\AdminController;
 use app\controllers\CategoryController;
+use app\controllers\OrderController;
 use app\controllers\ProductController;
 use app\controllers\RoleController;
 use app\controllers\SupplierController;
@@ -93,5 +94,13 @@ $app->router->get('/admin/user/remove',[UserController::class,'remove']);
 $app->router->post('/admin/product/addImg',[ProductController::class,'addImage']);
 $app->router->post('/admin/product/update',[ProductController::class,'updateProduct']);
 
-
+// order
+$app->router->get('/admin/order',[OrderController::class, 'index']);
+$app->router->get('/admin/order/detail',[OrderController::class, 'showDetail']);
+$app->router->get('/admin/order/update-status',[OrderController::class,'updateStatus']);
+$app->router->get('/admin/order/add',[OrderController::class,'adminAddOrder']);
+$app->router->get('/admin/order/add-cart',[OrderController::class,'addCart']);
+$app->router->get('/admin/order/cart-update',[OrderController::class,'update']);
+$app->router->get('/admin/order/cart-remove',[OrderController::class,'remove']);
+$app->router->post('/admin/order/add',[OrderController::class,'adminAddOrder']);
 $app->run();
