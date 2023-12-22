@@ -23,7 +23,7 @@ $app->router->get('/contact',[SiteController::class,'contact']);
 $app->router->post('/contact',[SiteController::class,'handleContact']);
 
 $app->router->get('/', [SiteController::class,'home']);
-
+$app->router->get('/', [SiteController::class,'home']);
 
 $app->router->get('/login',[AuthController::class,'login']);
 $app->router->post('/login',[AuthController::class,'login']);
@@ -46,6 +46,7 @@ $app->router->get('/user_order/detail',[UserOrderController::class, 'getDataDeta
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
 $app->router->get('/product',[ProductController::class,'showProduct']);
+
 
 // cart
 $app->router->get('/add-cart',[CartController::class,'addCart']);

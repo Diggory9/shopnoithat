@@ -3,6 +3,7 @@
 <div style="margin:5%;">
         <div style="margin-bottom: 2rem;" class="row justify-content-center align-items-center g-2 mt-10">
             <h1>Thông tin đơn hàng </h1>
+            <a href="/profile">Trở lại</a>
         </div>
             <table class="table table-striped">
                 <thead>
