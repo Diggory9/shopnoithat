@@ -23,9 +23,18 @@ class ProductController extends Controller
         $this->category = new Category();
         $this->supplier = new Supplier();
     }
-    public function productIndexAdmin()
+    public function productIndexAdmin(Request $request)
     {
-        $data = $this->product->getProductByPage();
+        $reqGet = $request->getBody();
+        if(!empty($reqGet['product_name'])){
+            $name = $reqGet['product_name'];
+            $data = $this->product->getProductByProductName($name);
+        }
+        else
+        {
+            $data = $this->product->getProductByPage();
+        }
+        
         foreach ($data as $value)
         {
             $category = $this->category->getCategoryById($value->category_id);
@@ -50,9 +59,21 @@ class ProductController extends Controller
         return $this->render('detail_product', ['product' => $proData, 'image' => $imageData]);
     }
 
-    public function showProduct($category = '')
+    public function showProduct(Request $request)
     {
-        $data = $this->product->getProductByPage();
+        
+        $reqGet = $request->getBody();
+        if(!empty($reqGet['category_id'])){
+            
+            $id = $reqGet['category_id'];
+            $data =  $this->product->getProductByCateID($id);
+            // echo '<pre>';
+            // var_dump($data);
+            // echo '</pre>';
+        }
+        else{
+            $data = $this->product->getProductByPage();
+        }
         $categoris = $this->category->selectAll();
         $suppliers = $this->supplier->selectAll();
         $image = new ProductImage();
@@ -220,11 +241,5 @@ class ProductController extends Controller
         }
     }
 
-    public function showCateory(Request $request)
-    {
-        $reqGet = $request->getBody();
-        $category_id = $reqGet['id'];
-        
-    }
 
 }

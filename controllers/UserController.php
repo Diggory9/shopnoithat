@@ -10,8 +10,17 @@ use app\models\Users;
     class UserController extends Controller
     {
         public function index(Request $request){
-            
             $user= new Users();
+            $reqGet = $request->getBody();
+            if(!empty($reqGet['user_id'])){
+                $userID = $reqGet['user_id'];
+                $data = $user->getUserById($userID);
+                $dataAll[]=$data;
+                if(!empty($dataAll)){
+                    $this->setLayout('admin');
+                    return $this->render('user/showTable',['users'=>$dataAll]);
+                }
+            }
             $dataAll = $user->selectAll();
             $this->setLayout('admin');
             return $this->render('user/showTable',['users'=>$dataAll]);

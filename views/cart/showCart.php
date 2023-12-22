@@ -87,17 +87,16 @@
                     </div>
                     <h5 class="text-uppercase mb-3">Shipping</h5>
 
-                  <button type="button" class="btn btn-dark btn-block btn-lg"
-                    data-mdb-ripple-color="dark">Thanh toán</button>
+                      
                     <div class="mb-4 pb-2">
                       <select class="select">
-                        <option value="1">Standard-Delivery- 50.000 đ</option>
+                        <option value="1">Ship hàng tận nơi 500.000 đ</option>
                       </select>
                     </div>
                     <hr class="my-4">
                     <div class="d-flex justify-content-between mb-5">
                       <h5 class="text-uppercase">Total price</h5>
-                      <h5><?php $totalFormat = number_format($total + 50000, 0, ',');
+                      <h5><?php $totalFormat = number_format($total + 500000, 0, ',');
                       echo $totalFormat . ' đ' ?></h5>
                     </div>
                     <a href="/checkout">

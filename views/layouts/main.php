@@ -84,6 +84,15 @@ use app\core\Application;
 			</div>
 				
 		</nav>
+		<?php
+		if (!empty(Application::$app->session->getFlash('success'))): ?>
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				<strong>Well done!</strong> <?php echo Application::$app->session->getFlash('success')?>
+			</div>
+
+			<?php Application::$app->session->removeFlash('success')?>
+		<?php endif; ?>
 		<!-- End Header/Navigation -->
         {{content}}
 		<!-- Start Footer Section -->
@@ -93,10 +102,7 @@ use app\core\Application;
 	<footer class="footer-section">
 			<div class="container relative">
 
-				<div class="sofa-img">
-					<img src="images/sofa.png" alt="Image" class="img-fluid">
-				</div>
-
+				
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form">

@@ -4,11 +4,12 @@
             <div class="p-2">
                 <h6 class="text-uppercase text-center">Danh mục sản phẩm</h6>
                 <div class="p-lists">
+                    <div class="d-flex justify-content-between mt-2"> <span><a href="/product" class="text-decoration-none">Tất cả </a></span> <span>  </span> </div>
                     <?php 
                     foreach($categoris as $value)
                     {
                         ?>
-                             <div class="d-flex justify-content-between mt-2"> <span><a href="" class="text-decoration-none"><?php echo $value->category_name;?> </a></span> <span>  </span> </div>
+                            <div class="d-flex justify-content-between mt-2"> <span><a href="/product?category_id=<?php echo $value->category_id;?>" class="text-decoration-none"><?php echo $value->category_name;?> </a></span> <span>  </span> </div>
                         <?php
                     }
                     ?>
@@ -52,16 +53,3 @@
         </div>
     </div>
 </div>
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>

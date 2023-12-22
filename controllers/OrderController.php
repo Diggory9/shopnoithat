@@ -26,10 +26,20 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        $data = $this->order->getAll();
+        $reqGet = $request->getBody();
+        if(!empty($reqGet['order_id'])){
+            $orID = $reqGet['order_id'];
+            $data = $this->order->getOrderById($orID);
+            $dataAll[]= $data;
+            if(!empty($dataAll)){
+                $this->setLayout('admin');
+                return $this->render('order/showTable',['data'=>$dataAll]);
+            }
+        }
+        $dataAll = $this->order->getAll();
       
         $this->setLayout('admin');
-        return $this->render('order/showTable',['data'=>$data]);
+        return $this->render('order/showTable',['data'=>$dataAll]);
         
     }
     public function showDetail(Request $request)

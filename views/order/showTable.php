@@ -12,6 +12,19 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
         <div class="col-6 text-end">
             <a href="/admin/order/add" class="btn btn-primary rounded">Create</a>
         </div>
+        <!-- form tìm kiếm -->
+        <div class="col-md-5 order-md-2 mb-8">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 w-100" method="get" action="/admin/order">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="order_id" placeholder="Tìm kiếm theo mã đơn hàng" aria-label="Search for..." aria-describedby="btnNavbarSearch" value="<?php echo $id ?? '' ?>" />
+                            <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="card">
@@ -30,27 +43,33 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
             </thead>
             <tbody>
                 <?php
-                foreach ($data as $value)
-                {
-                    ?>
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $value->order_id ?></td>
-                        <td><?php echo $value->consignee_name ?></td>
-                        <td><?php echo $value->consignee_phone ?></td>
-                        <td><?php echo $value->order_date ?></td>
-                        <td><?php
-                        $totalFormat = number_format( $value->total_amount, 0, ',');
-                        echo $totalFormat . ' đ'?></td>
-                        <td><?php echo $status[$value->status] ?></td>
-                        <td>
-                            <a href="/admin/order/detail?id=<?php echo $value->order_id?>"
-                                class="link-underline btn btn-primary btn-sm rounded" title="Chi tiết đơn hàng"><i
-                                    class="fa-regular fa-pen-to-square"></i></a>&nbsp;
-                        </td>
-                    </tr>
-                    <?php
+                if(!empty($data[0])){
+                    foreach ($data as $value)
+                    {
+                        ?>
+                        <tr>
+                            <td>1</td>
+                            <td><?php echo $value->order_id ?></td>
+                            <td><?php echo $value->consignee_name ?></td>
+                            <td><?php echo $value->consignee_phone ?></td>
+                            <td><?php echo $value->order_date ?></td>
+                            <td><?php
+                            $totalFormat = number_format( $value->total_amount, 0, ',');
+                            echo $totalFormat . ' đ'?></td>
+                            <td><?php echo $status[$value->status] ?></td>
+                            <td>
+                                <a href="/admin/order/detail?id=<?php echo $value->order_id?>"
+                                    class="link-underline btn btn-primary btn-sm rounded" title="Chi tiết đơn hàng"><i
+                                        class="fa-regular fa-pen-to-square"></i></a>&nbsp;
+                            </td>
+                        </tr>
+                        <?php
+                    }
                 }
+                else{
+                    echo "Không tìm thấy mã đơn hàng";
+                }
+                
                 ?>
             </tbody>
         </table>
