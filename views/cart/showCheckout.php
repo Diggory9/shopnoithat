@@ -63,6 +63,7 @@ use app\core\Application;
                         <span>Total (USD)</span>
                         <input type="text" name="total_amount" id="" value="<?php $total+=500000; echo $total?>" hidden>
                         <strong><?php $totalFormat = number_format($total, 0, ',');
+
                                 echo $totalFormat . ' đ'?></strong>
                     </li>
                 </ul>

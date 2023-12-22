@@ -36,7 +36,19 @@ class Order extends DbModel
             'consignee_add' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 4]],
         ];
     }
-
+    public function getDataByUserId($id)
+    {
+        try{
+            $sql = "SELECT * FROM `user_order` WHERE `user_id` = $id; ";
+            $stm = self::prepare($sql);
+            $stm->execute();
+            $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+            return $data;
+        }catch (Exception $e)
+        {
+            Application::$app->session->setFlash('error', 'Error !');
+        }
+    }
     public function tableName(): string
     {
         return "user_order";
@@ -50,6 +62,19 @@ class Order extends DbModel
         return 'order_id';
     }
 
+    public function selectAll()
+    {
+        try{
+            $sql = "select * from user_order";
+            $stm = self::prepare($sql);
+            $stm->execute();
+            $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+            return $data;
+        }catch (Exception $e)
+        {
+            Application::$app->session->setFlash('error', 'Error !');
+        }
+    }
     public function addOrderNew(&$session)
     {
         try
@@ -101,6 +126,19 @@ class Order extends DbModel
         }
 
 
+    }
+    public function getOrderNew()
+    {   
+        return self::find(['status'=>0]);
+    }
+    public function getCountOrderNew()
+    {
+        $sql = "SELECT COUNT(*) AS count_status_0
+        FROM user_order
+        WHERE status = 0;";
+        $stmt = Application::$app->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch();
     }
     public function getAll()
     {

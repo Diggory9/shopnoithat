@@ -9,7 +9,7 @@ use app\core\Application;
         <h2>Thêm đơn hàng</h2>
     </div>
     <div class="col-12">
-    <div class="card card-registration card-registration-2 bg-grey" style="border-radius: 15px;">
+    <div class=" bg-grey" style="border-radius: 15px;">
         <div class="card-body p-0">
             <div class="row g-0">
                 <div class="col-lg-8">
@@ -28,6 +28,7 @@ use app\core\Application;
 
 
                             $total = 0;
+
                             foreach ($_SESSION['cartAdmin'] as $key => $value): ?>
                                 <div class="row mb-4 d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
@@ -87,6 +88,7 @@ use app\core\Application;
                                     <?php echo !empty($_SESSION['cartAdmin']) ? count($_SESSION['cartAdmin']) . " items" : 0 . ' item'; ?>
                                 </h5>
                                 <h5><?php
+
                                 $totalFormat = number_format($total, 0, ',');
                                 echo $totalFormat . ' đ' ?>
 
@@ -168,10 +170,10 @@ use app\core\Application;
         <div class="col-md-7 order-md-1">
 
             <form method="post" action="/admin/order/add" class="needs-validation">
-                <input type="text" name="user_id" value="<?php echo $_SESSION['user'] ?>" hidden />
+                <input type="text" name="user_id" value="<?php echo $_SESSION['user']??0;?>" hidden />
 
                 
-                <input type="text" name="total_amount" value="<?php echo $total ?>" hidden />
+                <input type="text" name="total_amount" value="<?php echo $total; ?>" hidden />
                 <h4 class="mb-3">Billing address</h4>
                 <div class="row">
                     <div class="col-md-12 mb-3">

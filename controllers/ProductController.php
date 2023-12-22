@@ -24,17 +24,25 @@ class ProductController extends Controller
         $this->supplier = new Supplier();
     }
     public function productIndexAdmin(Request $request)
-    {
-        $reqGet = $request->getBody();
-        if(!empty($reqGet['product_name'])){
+        if($reqGet['selectOption'])
+        {
+            echo 1;
+            $option = $reqGet['selectOption'];
+            if($option == "pro_almost")
+            {
+                $data = $this->product->getProductAlmostAll();
+            }else if($option == 'pro_all')
+            {
+                $data = $this->product->getProductByPage();
+            }
+        }else if(!empty($reqGet['product_name']))
+        {
             $name = $reqGet['product_name'];
             $data = $this->product->getProductByProductName($name);
         }
-        else
-        {
+      else{
             $data = $this->product->getProductByPage();
         }
-        
         foreach ($data as $value)
         {
             $category = $this->category->getCategoryById($value->category_id);
@@ -61,6 +69,7 @@ class ProductController extends Controller
 
     public function showProduct(Request $request)
     {
+
         
         $reqGet = $request->getBody();
         if(!empty($reqGet['category_id'])){
@@ -108,7 +117,7 @@ class ProductController extends Controller
                 return $this->render('product/showAdd', ['model' => $this->product, 'categoris' => $categoris, 'suppliers' => $suppliers]);
             }
         }
-
+       
         $this->setLayout('admin');
         return $this->render('product/showAdd', ['model' => $this->product, 'categoris' => $categoris, 'suppliers' => $suppliers]);
     }

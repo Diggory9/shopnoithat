@@ -7,10 +7,14 @@ use app\controllers\AdminController;
 use app\controllers\CategoryController;
 use app\controllers\OrderController;
 use app\controllers\ProductController;
+use app\controllers\ReportController;
 use app\controllers\RoleController;
 use app\controllers\SupplierController;
 use app\controllers\UserController;
+use app\controllers\UserOrderController;
 use app\model\RegisterModel;
+use app\models\Report;
+
 require_once __DIR__.'/../vendor/autoload.php';
 require_once '../configs/db.php';
 
@@ -35,10 +39,9 @@ $app->router->get('/profile',[UserController::class,'showProfile']);
 $app->router->get('/profile/editProfile',[UserController::class,'editProfile']);
 $app->router->post('/profile/editProfile',[UserController::class,'editProfile']);
 
-
-
-
-
+//user_order
+$app->router->get('/user_order',[UserOrderController::class,'getDataByUserId']);
+$app->router->get('/user_order/detail',[UserOrderController::class, 'getDataDetailOrderByID']);
 
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
@@ -52,6 +55,7 @@ $app->router->get('/cart-update',[CartController::class,'update']);
 $app->router->get('/checkout',[CartController::class,'checkout']);
 $app->router->post('/checkout',[CartController::class,'checkout']);
 $app->router->get('/checkout-success',[CartController::class,'showSuccess']);
+$app->router->get('/checkout-error',[CartController::class,'showError']);
 
 $app->router->get('/admin',[AdminController::class,'home']);
 // category
@@ -111,4 +115,11 @@ $app->router->get('/admin/order/add-cart',[OrderController::class,'addCart']);
 $app->router->get('/admin/order/cart-update',[OrderController::class,'update']);
 $app->router->get('/admin/order/cart-remove',[OrderController::class,'remove']);
 $app->router->post('/admin/order/add',[OrderController::class,'adminAddOrder']);
+// report
+$app->router->get('/admin/report-12-month',[AdminController::class,'showReport']);
+$app->router->get('/admin/report-7-date-revenue',[AdminController::class,'show7DayRevenue']);
+$app->router->get('/admin/report',[ReportController::class,'index']);
+
+
+
 $app->run();

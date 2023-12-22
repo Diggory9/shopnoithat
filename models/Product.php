@@ -6,6 +6,7 @@ use app\core\DbModel;
 use app\core\exceptions\SqlException;
 use app\core\Model;
 use Exception;
+use PDO;
 
 class Product extends DbModel
 {
@@ -64,14 +65,15 @@ class Product extends DbModel
             Application::$app->session->setFlash('error', 'Error!');
         }
     }
-    public function getProductByPage($sizepage = 12, $page = 1)
+
+    public function getProductByPage()
     {
         try
         {
-            $offset = ($page - 1) * $sizepage;
+         
             $sql = 'SELECT *
-            FROM product
-            LIMIT ' . $sizepage . ' OFFSET ' . $offset;
+            FROM product';
+          
             $stm = $this->prepare($sql);
             $stm->execute();
             $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
@@ -85,7 +87,8 @@ class Product extends DbModel
     }
     public function saveProduct($file, $uploadDirectory)
     {
-        try{
+        try
+        {
             $check = true;
             $d = self::findOne(['product_name' => $this->product_name]);
             if (!empty($d))
@@ -97,7 +100,7 @@ class Product extends DbModel
             $table = $this->tableName();
             $attributes = ['product_name', 'product_des', 'product_price', 'product_stock_quantity', 'category_id', 'supplier_id'];
             $params = array_map(fn($attr) => ":$attr", $attributes);
-    
+
             $stmt = self::prepare("INSERT INTO $table(" . implode(',', $attributes) . ") VALUES(" . implode(',', $params) . ")");
             foreach ($attributes as $attribute)
             {
@@ -109,12 +112,12 @@ class Product extends DbModel
             $check = $this->addImages($file, $uploadDirectory);
             Application::$app->db->getConnection()->commit();
             return $check;
-        }catch(Exception $e)
+        } catch (Exception $e)
         {
             Application::$app->db->getConnection()->rollBack();
             return false;
         }
-       
+
     }
     public function addImages($file, $uploadDirectory)
     {
@@ -161,9 +164,9 @@ class Product extends DbModel
     }
 
     public function removeProById($id)
-        {
-            return self::remove(['product_id'=>$id]);
-        }
+    {
+        return self::remove(['product_id' => $id]);
+    }
     public function showProductByCategory($categoryId, $sizepage = 12, $page = 1)
     {
         try
@@ -179,13 +182,46 @@ class Product extends DbModel
             $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
             $img = new ProductImage();
             return $data;
-        }
-         catch (Exception $e)
+        } catch (Exception $e)
         {
             throw new SqlException();
         }
     }
 
+    // đếm số lượng gần hết trong kho
+    public function getCountProductAlmostAll()
+    {
+        try
+        {
+            $sql = "SELECT COUNT(*) AS product_count
+            FROM product
+            WHERE product_stock_quantity = 2;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (Exception $e)
+        {
+            return 0;
+        }
+
+    }
+    public function getProductAlmostAll()
+    {
+        // lấy những sản phẩm có số lượng nhỏ hơn 2
+        try{
+
+            $sql ="SELECT COUNT(*) AS product_count
+            FROM product
+            WHERE product_stock_quantity < 2;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(\PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
 
 }
 ?>
