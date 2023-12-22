@@ -79,9 +79,6 @@ use app\models\Users;
             if ($request->isPost())
             {
                 $user->loadData($request->getBody());
-                echo '<pre>';
-                //var_dump($user);
-                echo '</pre>';
                 if ($user->validate() && $user->insertData())
                 {
                     Application::$app->session->setFlash('success', 'Insert data user successfuly!');
