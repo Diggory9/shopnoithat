@@ -10,14 +10,14 @@ use Exception;
         public const STATUS_ACTIVITY = 0;
         public const STATUS_LOCK = 1;
         protected $table ="user";
-        public int $user_id;
-        public string $user_email;
-        public string $user_firstname;
-        public string $user_lastname;
+        public  $user_id;
+        public  $user_email;
+        public  $user_firstname;
+        public  $user_lastname;
         public  $user_phone;
         public  $user_address;
-        public string $user_password;
-        public int $status;
+        public  $user_password;
+        public  $status;
 
         //
       
@@ -29,7 +29,9 @@ use Exception;
                 'user_firstname' => [self::RULE_REQUIRED],
                 'user_lastname'=>[self::RULE_REQUIRED],
                 'user_phone'=>[self::RULE_REQUIRED,self::RULE_PHONE],
-                'user_address'=>[self::RULE_REQUIRED],
+                'user_address'=>[self::RULE_REQUIRED,[self::RULE_MIN,'min'=>5]],
+                'user_password'=>[self::RULE_REQUIRED,[self::RULE_MIN,'min'=>4]],
+                'user_email'=>[self::RULE_REQUIRED, self::RULE_EMAIL]
             ];
         }
 

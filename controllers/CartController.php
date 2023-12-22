@@ -89,13 +89,13 @@ class CartController extends Controller
     public function showSuccess(Request $request)
     {
         $reqGet = $request->getBody();
-        $code = $reqGet['id'];
+       
         return $this->render('cart/showSuccess');
     }
     public function showError(Request $request)
     {
         $reqGet = $request->getBody();
-        $code = $reqGet['id'];
+      
         return $this->render('cart/showError');
     }
 }
