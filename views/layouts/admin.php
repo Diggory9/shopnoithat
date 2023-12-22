@@ -79,6 +79,11 @@ use app\core\Application;
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                            Quản lý user
                         </a>
+                         <!-- Đơn hàng -->
+                         <a class="nav-link" href="/admin/order">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                           Quản lý đơn hàng
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

@@ -52,12 +52,11 @@ class Category extends DbModel
     public function selectAll()
     {
         try{
-
-            
             $sql = "select * from category";
             $stm = self::prepare($sql);
             $stm->execute();
             $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+         
             return $data;
         }catch (Exception $e)
         {

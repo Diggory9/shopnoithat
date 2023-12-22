@@ -86,6 +86,7 @@
                       </h5>
                     </div>
                     <h5 class="text-uppercase mb-3">Shipping</h5>
+
                     <div class="mb-4 pb-2">
                       <select class="select">
                         <option value="1">Ship hàng tận nơi- 500.000 đ</option>
@@ -94,6 +95,7 @@
                     <hr class="my-4">
                     <div class="d-flex justify-content-between mb-5">
                       <h5 class="text-uppercase">Total price</h5>
+
                       <h5><?php $total+=500000;  $totalFormat = number_format($total, 0, ',');
                       echo $totalFormat . ' đ' ?></h5>
                     </div>

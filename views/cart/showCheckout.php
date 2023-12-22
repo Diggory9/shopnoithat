@@ -33,7 +33,7 @@ use app\core\Application;
                     $total = 0;
                     foreach ($_SESSION['cart'] as $key => $value)
                     {
-                        $total = $value['sl'] * $value['product_price'];
+                        $total += $value['sl'] * $value['product_price'];
                         ?>
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
@@ -57,12 +57,13 @@ use app\core\Application;
                             <h6 class="my-0">Vận chuyển</h6>
                             <small></small>
                         </div>
-                        <span class="text-secondary">50,000 đ</span>
+                        <span class="text-secondary">500,000 đ</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
-                        <input type="text" name="total_amount" id="" value="<?php echo $total+=500000?>" hidden>
-                        <strong><?php  $totalFormat = number_format($total, 0, ',');
+                        <input type="text" name="total_amount" id="" value="<?php $total+=500000; echo $total?>" hidden>
+                        <strong><?php $totalFormat = number_format($total, 0, ',');
+
                                 echo $totalFormat . ' đ'?></strong>
                     </li>
                 </ul>

@@ -9,8 +9,18 @@ use app\models\Supplier;
     class SupplierController extends Controller
     {
         public function index(Request $request){
-            
             $supplier = new Supplier();
+
+            $reqGet = $request->getBody();
+            if(!empty($reqGet['supplier_id'])){
+                $supID = $reqGet['supplier_id'];
+                $data = $supplier->getSupplierById($supID);
+                $dataAll[]= $data;
+                if(!empty($dataAll)){
+                    $this->setLayout('admin');
+                    return $this->render('supplier/showTable',['suppliers'=>$dataAll]);
+                }
+            }
             $dataAll = $supplier->selectAll();
             $this->setLayout('admin');
             return $this->render('supplier/showTable',['suppliers'=>$dataAll]);

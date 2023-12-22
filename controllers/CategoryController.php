@@ -12,12 +12,21 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-
-
         $category = new Category();
+        $reqGet = $request->getBody();
+        if(!empty($reqGet['category_id'])){
+            $id = $reqGet['category_id'];
+           
+            $data = $category->getCategoryById($id);
+            $dataAll[] = $data;
+            if(!empty($dataAll)){
+                $this->setLayout('admin');
+                return $this->render('category/showTable',['categoris'=>$dataAll]);
+            }
+            
+            
+        }
         $dataAll = $category->selectAll();
-
-      
         $this->setLayout('admin');
         return $this->render('category/showTable',['categoris'=>$dataAll]);
         

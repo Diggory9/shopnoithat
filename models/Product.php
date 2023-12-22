@@ -49,6 +49,23 @@ class Product extends DbModel
         $data = self::findOne(['product_id' => $id]);
         return $data;
     }
+    public function getProductByCateID($id){
+        $data = self::find(['category_id'=>$id]);
+        return $data;
+    }
+    public function getProductByProductName($name){
+        try{
+            $sql = " SELECT * FROM `product` WHERE `product_name` like '%$name%'";
+            $stm = self::prepare($sql);
+            $stm->execute();
+            $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+            return $data;
+        }catch (Exception $e)
+        {
+            Application::$app->session->setFlash('error', 'Error!');
+        }
+    }
+
     public function getProductByPage()
     {
         try

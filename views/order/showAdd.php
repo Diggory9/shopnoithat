@@ -134,7 +134,8 @@ use app\core\Application;
                                 placeholder="Tìm kiếm theo mã sản phẩm" aria-label="Search for..."
                                 aria-describedby="btnNavbarSearch" value="<?php echo $id ?? '' ?>" />
                             <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i
-                                    class="fas fa-search"></i></button>
+                                    class="fas fa-search"></i>
+                                </button>
                         </div>
                     </form>
                 </li>
