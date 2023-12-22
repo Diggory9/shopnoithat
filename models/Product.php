@@ -58,7 +58,7 @@ class Product extends DbModel
             $sql = " SELECT * FROM `product` WHERE `product_name` like '%$name%'";
             $stm = self::prepare($sql);
             $stm->execute();
-            $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+            $data = $stm -> fetchAll(PDO::FETCH_CLASS,static::class);
             return $data;
         }catch (Exception $e)
         {
@@ -76,7 +76,7 @@ class Product extends DbModel
           
             $stm = $this->prepare($sql);
             $stm->execute();
-            $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
+            $data = $stm->fetchAll(PDO::FETCH_CLASS, static::class);
             $img = new ProductImage();
             return $data;
         } catch (Exception $e)
@@ -179,7 +179,7 @@ class Product extends DbModel
 
             $stm->bindValue(":cate", $categoryId);
             $stm->execute();
-            $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
+            $data = $stm->fetchAll(PDO::FETCH_CLASS, static::class);
             $img = new ProductImage();
             return $data;
         } catch (Exception $e)
@@ -215,7 +215,7 @@ class Product extends DbModel
             WHERE product_stock_quantity < 5;";
             $stmt = Application::$app->db->getConnection()->prepare($sql);
             $stmt->execute();
-         return $stmt->fetchAll(\PDO::FETCH_CLASS,static::class);
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
 
         }catch(Exception $e)
         {

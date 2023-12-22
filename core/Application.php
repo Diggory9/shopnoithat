@@ -92,6 +92,7 @@ class Application{
         }
         catch(\Exception $ex)
         {
+            
             echo $this->view->renderView('errors/_error',[
                 'exception'=> $ex
             ]);

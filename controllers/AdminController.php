@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use app\core\Controller;
+use app\core\middlewares\AdminMiddleware;
 use app\core\Request;
 use app\models\Order;
 use app\models\Product;
@@ -17,6 +18,7 @@ class AdminController extends Controller
         $this->report = new Report();
         $this->order = new Order();
         $this->product = new Product();
+        $this->registerMiddleware(new AdminMiddleware(['home']));
     }
 
     public function home(Request $request)

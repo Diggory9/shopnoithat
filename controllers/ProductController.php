@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\middlewares\AdminMiddleware;
 use app\core\Request;
 use app\models\Category;
 use app\models\Product;
@@ -22,10 +23,11 @@ class ProductController extends Controller
         $this->product = new Product();
         $this->category = new Category();
         $this->supplier = new Supplier();
+        $this->registerMiddleware(new AdminMiddleware(['productIndexAdmin','productAddAdmin','productDetailAdmin']));
     }
     public function productIndexAdmin(Request $request){
         $reqGet = $request->getBody();
-        if(!empty($reqGet['selectOption']))
+        if(!empty($reqGet['selectOption']) )
         {
            
             echo 1;
