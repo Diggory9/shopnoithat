@@ -23,7 +23,8 @@ class ProductController extends Controller
         $this->category = new Category();
         $this->supplier = new Supplier();
     }
-    public function productIndexAdmin(Request $request)
+    public function productIndexAdmin(Request $request){
+        $reqGet = $request->getBody();
         if($reqGet['selectOption'])
         {
             echo 1;
