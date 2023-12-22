@@ -1,7 +1,7 @@
 <section style="background-color: #eee;">
   <div class="container py-5">
     <div style="margin-bottom: 2rem;" class="row justify-content-center align-items-center g-2 mt-10">
-          <h1>Update profile</h1>
+          <h1>Profile user</h1>
       </div>
     <div class="row">
       <div class="col-lg-4">

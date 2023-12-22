@@ -11,6 +11,7 @@ use app\controllers\ReportController;
 use app\controllers\RoleController;
 use app\controllers\SupplierController;
 use app\controllers\UserController;
+use app\controllers\UserOrderController;
 use app\model\RegisterModel;
 use app\models\Report;
 
@@ -37,6 +38,10 @@ $app->router->get('/profile',[AuthController::class,'profile']);
 $app->router->get('/profile',[UserController::class,'showProfile']);
 $app->router->get('/profile/editProfile',[UserController::class,'editProfile']);
 $app->router->post('/profile/editProfile',[UserController::class,'editProfile']);
+
+//user_order
+$app->router->get('/user_order',[UserOrderController::class,'getDataByUserId']);
+$app->router->get('/user_order/detail',[UserOrderController::class, 'getDataDetailOrderByID']);
 
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
