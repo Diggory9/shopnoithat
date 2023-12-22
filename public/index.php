@@ -10,6 +10,7 @@ use app\controllers\ProductController;
 use app\controllers\RoleController;
 use app\controllers\SupplierController;
 use app\controllers\UserController;
+use app\controllers\UserOrderController;
 use app\model\RegisterModel;
 require_once __DIR__.'/../vendor/autoload.php';
 require_once '../configs/db.php';
@@ -35,7 +36,9 @@ $app->router->get('/profile',[UserController::class,'showProfile']);
 $app->router->get('/profile/editProfile',[UserController::class,'editProfile']);
 $app->router->post('/profile/editProfile',[UserController::class,'editProfile']);
 
-
+//user_order
+$app->router->get('/user_order',[UserOrderController::class,'getDataByUserId']);
+$app->router->get('/user_order/detail',[UserOrderController::class, 'getDataDetailOrderByID']);
 
 
 
