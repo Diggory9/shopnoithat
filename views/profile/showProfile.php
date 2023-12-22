@@ -2,6 +2,7 @@
   <div class="container py-5">
     <div style="margin-bottom: 2rem;" class="row justify-content-center align-items-center g-2 mt-10">
           <h1>Profile user</h1>
+          
       </div>
     <div class="row">
       <div class="col-lg-4">
@@ -12,7 +13,8 @@
             
             <p class="text-muted mb-4"><?php echo $model->user_address; ?></p>
             <div class="d-flex justify-content-center mb-2">
-              <a href="/profile/editProfile"> <button type="button" class="btn btn-primary">Update</button></a>   
+              <a href="/profile/editProfile" style="margin-right: 2%;"> <button type="button" class="btn btn-primary">Update Profile</button></a> 
+              <a href="/user_order"style="margin-left: 2%;"> <button   type="button" class="btn btn-primary">Đơn hàng</button></a>     
             </div>
           </div>
         </div>
