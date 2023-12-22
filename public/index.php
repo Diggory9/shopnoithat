@@ -35,11 +35,6 @@ $app->router->get('/profile',[UserController::class,'showProfile']);
 $app->router->get('/profile/editProfile',[UserController::class,'editProfile']);
 $app->router->post('/profile/editProfile',[UserController::class,'editProfile']);
 
-
-
-
-
-
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
 $app->router->get('/product',[ProductController::class,'showProduct']);
@@ -111,4 +106,11 @@ $app->router->get('/admin/order/add-cart',[OrderController::class,'addCart']);
 $app->router->get('/admin/order/cart-update',[OrderController::class,'update']);
 $app->router->get('/admin/order/cart-remove',[OrderController::class,'remove']);
 $app->router->post('/admin/order/add',[OrderController::class,'adminAddOrder']);
+
+// report
+
+$app->router->get('/admin/report-12-month',[AdminController::class,'showReport']);
+
+
+
 $app->run();
