@@ -27,14 +27,15 @@ class ProductController extends Controller
     }
     public function productIndexAdmin(Request $request){
         $reqGet = $request->getBody();
-
         if(!empty($reqGet['selectOption']) )
         {
+           
             echo 1;
             $option = $reqGet['selectOption'];
             if($option == "pro_almost")
             {
                 $data = $this->product->getProductAlmostAll();
+                
             }else if($option == 'pro_all')
             {
                 $data = $this->product->getProductByPage();

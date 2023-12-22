@@ -171,7 +171,7 @@ use app\core\Application;
 
             <form method="post" action="/admin/order/add" class="needs-validation">
                 <input type="text" name="user_id" value="<?php echo $_SESSION['user']??0;?>" hidden />
-                <input type="text" name="total_amount" value="<?php echo $total; ?>" hidden />
+                <input type="text" name="total_amount" value="<?php echo $total??0; ?>" hidden />
                 <h4 class="mb-3">Billing address</h4>
                 <div class="row">
                     <div class="col-md-12 mb-3">
