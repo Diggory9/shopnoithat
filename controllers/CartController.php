@@ -11,6 +11,7 @@ use app\models\Login;
 use app\models\Order;
 use app\models\User;
 use app\core\middlewares\AuthMiddleware;
+use app\models\Users;
 
 class CartController extends Controller
 {
@@ -18,18 +19,15 @@ class CartController extends Controller
     public $order;
     public function __construct()
     {
-        $this->cart = new Cart();
+        $this->cart = new Cart($_SESSION['cart']);
         $this->order = new Order();
     }
 
     public function index(Request $request)
     {
-        echo '<pre>';
-        var_dump($_SESSION['cart']);
-        echo '</pre>';
-
+      
+     
         return $this->render('cart/showCart');
-
     }
     public function addCart(Request $request)
     {
@@ -70,7 +68,7 @@ class CartController extends Controller
             echo '<pre>';
             var_dump($this->order);
             echo '</pre>';
-            if($this->order->validate() && $this->order->addOrderNew())
+            if($this->order->validate() && $this->order->addOrderNew($_SESSION['cart']))
             {
                 $code = md5($this->order->order_id);
                 Application::$app->response->redirect('/checkout-success?id='.$code);
@@ -87,6 +85,7 @@ class CartController extends Controller
         
         return $this->render('cart/showCheckout',['model'=>$this->order]);
     }
+    
     public function showSuccess(Request $request)
     {
         $reqGet = $request->getBody();

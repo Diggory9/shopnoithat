@@ -9,6 +9,7 @@
         public $order_id;
         public $quantity;
         public $price;
+        public $product_name;
 
         public function rules()
         {
@@ -40,6 +41,7 @@
         {
             return self::find(['order_id'=>$id]);
         }
+
         public function getDataByOrderID($id){
             try{
                 $sql = "SELECT * FROM `detail_order` WHERE `order_id` = $id; ";
@@ -52,6 +54,7 @@
                 Application::$app->session->setFlash('error', 'Error !');
             }
         }
+
     }
 
 

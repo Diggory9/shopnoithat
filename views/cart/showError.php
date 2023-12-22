@@ -1,12 +1,12 @@
 
-    <style>
+<style>
       body {
         text-align: center;
         padding: 40px 0;
         background: #EBF0F5;
       }
         h1 {
-          color: #88B04B;
+          color: #030303;
           font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
           font-weight: 900;
           font-size: 40px;
@@ -35,12 +35,13 @@
     </style>
       <div class="card">
       <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
-        <i class="checkmark">✓</i>
+        <i class="checkmark">X</i>
       </div>
-        <h1>Success</h1> 
-        <p>Xin chân thành cảm ơn bạn đã ủng hộ shop</p>
+        <h1>Error</h1> 
+        <p>Hóa đơn không thành công</p>
         <hr/>
-        <p>Nếu có thắc mắc gì về đơn hàng xin quý khách liên hệ quá số <span color="#88B04B">0346875565</span></p>
+        <p>Xin quý khách liên hệ <span color="#88B04B">0346875565</span> để được nhân viên tư vấn </p>
+   
         <div>
           <a href='/'><button class="btn btn-primary">Trở về trang chủ</button></a>
         </div>
