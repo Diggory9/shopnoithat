@@ -58,7 +58,7 @@ class Product extends DbModel
             $sql = " SELECT * FROM `product` WHERE `product_name` like '%$name%'";
             $stm = self::prepare($sql);
             $stm->execute();
-            $data = $stm -> fetchAll(\PDO::FETCH_CLASS,static::class);
+            $data = $stm -> fetchAll(PDO::FETCH_CLASS,static::class);
             return $data;
         }catch (Exception $e)
         {
@@ -76,7 +76,7 @@ class Product extends DbModel
           
             $stm = $this->prepare($sql);
             $stm->execute();
-            $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
+            $data = $stm->fetchAll(PDO::FETCH_CLASS, static::class);
             $img = new ProductImage();
             return $data;
         } catch (Exception $e)
@@ -179,7 +179,7 @@ class Product extends DbModel
 
             $stm->bindValue(":cate", $categoryId);
             $stm->execute();
-            $data = $stm->fetchAll(\PDO::FETCH_CLASS, static::class);
+            $data = $stm->fetchAll(PDO::FETCH_CLASS, static::class);
             $img = new ProductImage();
             return $data;
         } catch (Exception $e)
@@ -195,7 +195,7 @@ class Product extends DbModel
         {
             $sql = "SELECT COUNT(*) AS product_count
             FROM product
-            WHERE product_stock_quantity = 2;";
+            WHERE product_stock_quantity < 5;";
             $stmt = Application::$app->db->getConnection()->prepare($sql);
             $stmt->execute();
             return $stmt->fetch();
@@ -210,12 +210,12 @@ class Product extends DbModel
         // lấy những sản phẩm có số lượng nhỏ hơn 2
         try{
 
-            $sql ="SELECT COUNT(*) AS product_count
+            $sql ="SELECT *
             FROM product
-            WHERE product_stock_quantity < 2;";
+            WHERE product_stock_quantity < 5;";
             $stmt = Application::$app->db->getConnection()->prepare($sql);
             $stmt->execute();
-         return $stmt->fetchAll(\PDO::FETCH_CLASS,static::class);
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
 
         }catch(Exception $e)
         {

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\middlewares\AdminMiddleware;
 use app\core\Request;
 use app\models\Cart;
 use app\models\DetailOrder;
@@ -22,6 +23,8 @@ class OrderController extends Controller
         $this->orderDetail = new DetailOrder();
         $this->product = new Product();
         $this->cart = new Cart($_SESSION['cartAdmin']);
+        $this->registerMiddleware(new AdminMiddleware(['productIndexAdmin','productAddAdmin','productDetailAdmin']));
+
     }
 
     public function index(Request $request)
@@ -67,7 +70,17 @@ class OrderController extends Controller
         $orderCurrent = $this->order->getOrderById($idOrder);
         if($status == 1)
         {
+            Application::$app->db->getConnection()->beginTransaction();
+            // lấy sản phẩm hiên tại để trừ số lượng
+            $detail = $this->orderDetail->getDataByOrderID($idOrder);
+            foreach($detail as $value)
+            {
+                // lấy sản phẩm
+                $pro = $this->product->getProductById($value->product_id);
+                $this->product->updateProduct(['product_stock_quantity'=>$pro->product_stock_quantity -$value->quantity ], ['product_id'=>$value->product_id]);
+            }
             // lưu lại người mà đã xác nhận
+            
             $attributes = ['status'=>$status,'through_user_id'=>$userId];
             $where = ['order_id'=>$idOrder];
             if($this->order->updateOrder($attributes,$where))
@@ -75,6 +88,7 @@ class OrderController extends Controller
                  // gửi maill là đã xác nhận đơn hàng.
            
                 Application::$app->session->setFlash('success', 'Đơn hàng đã được xác nhận');
+                Application::$app->db->getConnection()->commit();
                 Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
             }
 

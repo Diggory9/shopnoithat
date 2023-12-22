@@ -63,7 +63,7 @@ use app\core\Application;
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="images/user.svg"></a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo BASE__URL?>images/user.svg"></a>
 							<div class="dropdown-menu">
 								<?php if(Application::$app->isGuest()):?>
 								<a class="dropdown-item" href="/login">Login</a>
