@@ -7,7 +7,16 @@
             <a href="/admin/product/add" class="btn btn-primary rounded">Create</a>
         </div>
     </div>
-
+    <div class="row mb-3 mt-3">
+        <form action="/admin/product" method="get" id="filterProduct">
+            <select name="selectOption">
+               
+                <option value="pro_all">Show sản tất cả</option>
+                <option value="pro_almost">Show sản phẩm sắp hết</option>
+            </select>
+            <input type="submit" value="lọc" class="btn-sm btn-secondary"/>
+        </form>
+    </div>
     <div class="card">
         <form action="/admin/category" method="post"></form>
 

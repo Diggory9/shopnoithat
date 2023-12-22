@@ -25,8 +25,6 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-      
-     
         return $this->render('cart/showCart');
     }
     public function addCart(Request $request)
@@ -35,7 +33,7 @@ class CartController extends Controller
         $productId  = $reqGet['id']; 
         $this->cart->addProduct($productId);
         $currentUrl = $_SERVER['HTTP_REFERER'];
-       
+        Application::$app->session->setFlash('success','Thêm sản phẩm thành công');
         Application::$app->response->redirect($currentUrl);
 
     }
@@ -64,14 +62,16 @@ class CartController extends Controller
             $this->order->loadData($request->getBody());
             $current_time = date("Y-m-d H:i:s"); // lấy thời gian hiện tại
             $this->order->order_date = $current_time;
-            // kiểm tra phương thức thanh toán 
-            echo '<pre>';
-            var_dump($this->order);
-            echo '</pre>';
-            if($this->order->validate() && $this->order->addOrderNew($_SESSION['cart']))
+            // kiểm tra phương thức thanh toán
+            if($this->order->validate())
             {
-                $code = md5($this->order->order_id);
-                Application::$app->response->redirect('/checkout-success?id='.$code);
+                if($this->order->addOrderNew($_SESSION['cart']))
+                {
+                    Application::$app->response->redirect('/checkout-success');
+                }else{
+                    Application::$app->response->redirect('/checkout-error');
+                }
+               
             }else{
                 return $this->render('cart/showCheckout', ['model' => $this->order]);
             }
@@ -90,7 +90,12 @@ class CartController extends Controller
     {
         $reqGet = $request->getBody();
         $code = $reqGet['id'];
-        return $this->render('cart/showSuccess',['id'=>$code]);
+        return $this->render('cart/showSuccess');
     }
-    
+    public function showError(Request $request)
+    {
+        $reqGet = $request->getBody();
+        $code = $reqGet['id'];
+        return $this->render('cart/showError');
+    }
 }
