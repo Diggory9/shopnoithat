@@ -61,8 +61,8 @@ use app\core\Application;
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
-                        <input type="text" name="total_amount" id="" value="<?php echo $total?>" hidden>
-                        <strong><?php $totalFormat = number_format($total, 0, ',');
+                        <input type="text" name="total_amount" id="" value="<?php echo $total+=500000?>" hidden>
+                        <strong><?php  $totalFormat = number_format($total, 0, ',');
                                 echo $totalFormat . ' đ'?></strong>
                     </li>
                 </ul>

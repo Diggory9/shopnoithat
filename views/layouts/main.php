@@ -84,6 +84,15 @@ use app\core\Application;
 			</div>
 				
 		</nav>
+		<?php
+		if (!empty(Application::$app->session->getFlash('success'))): ?>
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				<strong>Well done!</strong> <?php echo Application::$app->session->getFlash('success')?>
+			</div>
+
+			<?php Application::$app->session->removeFlash('success')?>
+		<?php endif; ?>
 		<!-- End Header/Navigation -->
         {{content}}
 		<!-- Start Footer Section -->

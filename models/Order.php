@@ -102,6 +102,19 @@ class Order extends DbModel
 
 
     }
+    public function getOrderNew()
+    {   
+        return self::find(['status'=>0]);
+    }
+    public function getCountOrderNew()
+    {
+        $sql = "SELECT COUNT(*) AS count_status_0
+        FROM user_order
+        WHERE status = 0;";
+        $stmt = Application::$app->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
     public function getAll()
     {
         try
