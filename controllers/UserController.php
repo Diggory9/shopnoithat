@@ -82,12 +82,14 @@ class UserController extends Controller
         if ($request->isPost())
         {
             $user->loadData($request->getBody());
+
             $user->user_password = trim($user->user_password);
+
             if (empty($user->user_password) || $user->user_password == null || $user->user_password == "")
             {
                 $user->addErrors('user_password','Chưa nhập dữ liệu');
             }
-            if(strlen($user->user_password ) <4)
+            if(strlen($user->user_password) < 4)
             {
                 $user->addErrors('user_password', 'Mật khẩu không đủ ký tự');
             }
