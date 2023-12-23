@@ -18,10 +18,6 @@ use Exception;
         public  $user_address;
         public  $user_password;
         public  $status;
-
-        //
-      
-        //
         public function rules()
         {
             return [
@@ -30,7 +26,7 @@ use Exception;
                 'user_lastname'=>[self::RULE_REQUIRED],
                 'user_phone'=>[self::RULE_REQUIRED,self::RULE_PHONE],
                 'user_address'=>[self::RULE_REQUIRED,[self::RULE_MIN,'min'=>5]],
-                'user_email'=>[self::RULE_REQUIRED, self::RULE_EMAIL,self::RULE_UNIQUE]
+                'user_email'=>[self::RULE_REQUIRED, self::RULE_EMAIL,[self::RULE_UNIQUE,'class'=>$this::class]],
             ];
         }
 
@@ -60,24 +56,9 @@ use Exception;
             {
                 Application::$app->session->setFlash('error', 'Error !!!');
             }
-        }
+        }   
         public function insertData()
         {
-            $this->user_password = trim($this->user_password); 
-            if(empty($this->user_password)||$this->user_password ==null ||$this->user_password="")
-            {
-                $this->addErrors(self::RULE_REQUIRED,'Mật khẩu chưa được nhập');
-                $isError =1;
-            }
-            if(strlen($this->user_password)< 4)
-            {
-                $this->addErrors(self::RULE_UNIQUE,'Mật khẩu bị trùng');
-                $isError =1;
-            }
-            if($isError == 1)
-            {
-                return false;
-            }
             $this->status = self::STATUS_ACTIVITY;
             $this->user_password = md5($this->user_password);
             return self::save(['user_email','user_firstname','user_lastname','user_phone','user_address','user_password','status']);
