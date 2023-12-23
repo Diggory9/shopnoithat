@@ -163,4 +163,19 @@ class Order extends DbModel
     {
         return self::update($attributes,$where);
     }
+    public function getAllOrderNew()
+    {
+        // lấy những đơn hàng trạng thái đơn hàng mới
+        try{
+
+            $sql ="SELECT * FROM `user_order` WHERE `status` = 0;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
 }

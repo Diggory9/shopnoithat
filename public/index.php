@@ -25,6 +25,10 @@ $app->router->post('/contact',[SiteController::class,'handleContact']);
 $app->router->get('/', [SiteController::class,'home']);
 $app->router->get('/', [SiteController::class,'showProduct']);
 
+//about 
+
+$app->router->get('/about', [SiteController::class,'about']);
+
 $app->router->get('/login',[AuthController::class,'login']);
 $app->router->post('/login',[AuthController::class,'login']);
 

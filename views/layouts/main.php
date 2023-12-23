@@ -34,7 +34,7 @@ use app\core\Application;
     <link href="<?php echo BASE__URL?>css/style.css" rel="stylesheet"/>
     <link href="<?php echo BASE__URL?>css/detailproduct.css" rel="stylesheet">
 		<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+		<title>Shop nội thất </title>
 	</head>
 
 	<body>
@@ -43,7 +43,7 @@ use app\core\Application;
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 			<div class="container">
-				<a class="navbar-brand" href="/">Furni<span>.</span></a>
+				<a class="navbar-brand" href="/">NDV Shop</a>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -56,9 +56,7 @@ use app\core\Application;
 						</li>
 						<li><a class="nav-link" href="/product">Shop</a></li>
 						<li><a class="nav-link" href="/about">About us</a></li>
-						<li><a class="nav-link" href="/product">Services</a></li>
-						<li><a class="nav-link" href="/product">Blog</a></li>
-						<li><a class="nav-link" href="/product">Contact us</a></li>
+						
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">

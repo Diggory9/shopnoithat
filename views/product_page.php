@@ -4,7 +4,7 @@
             <div class="p-2">
                 <h6 class="text-uppercase text-center">Danh mục sản phẩm</h6>
                 <div class="p-lists">
-                    <div class="d-flex justify-content-between mt-2"> <span><a href="/product" class="text-decoration-none">Tất cả </a></span> <span>  </span> </div>
+                    <div class="d-flex justify-content-between mt-2"> <span><a href="/product" class="text-decoration-none">All Sản phẩm </a></span> <span>  </span> </div>
                     <?php 
                     foreach($categoris as $value)
                     {
