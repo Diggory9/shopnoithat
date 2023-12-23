@@ -92,7 +92,44 @@ class OrderController extends Controller
                 Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
             }
 
-        }else
+        }else if($status == 5)
+        {
+
+            Application::$app->db->getConnection()->beginTransaction();
+            // lấy sản phẩm hiên tại để trừ số lượng
+            if($orderCurrent->status == 0)
+            {
+                $attributes = ['status'=>$status];
+                $where = ['order_id'=>$idOrder];
+                if($this->order->updateOrder($attributes,$where))
+                {
+                    Application::$app->session->setFlash('success', 'Đơn hàng đã được cập nhật');
+                    Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
+                }
+            }
+            else{
+                $detail = $this->orderDetail->getDataByOrderID($idOrder);
+                foreach($detail as $value)
+                {
+                    // lấy sản phẩm
+                    $pro = $this->product->getProductById($value->product_id);
+                    $this->product->updateProduct(['product_stock_quantity'=> $pro->product_stock_quantity + $value->quantity ], ['product_id'=>$value->product_id]);
+                }
+                // lưu lại người mà đã xác nhận
+                $attributes = ['status'=>$status];
+                $where = ['order_id'=>$idOrder];
+                if($this->order->updateOrder($attributes,$where))
+                {
+                     // gửi maill là đã xác nhận đơn hàng.
+               
+                    Application::$app->session->setFlash('success', 'Đơn hàng đã được xác nhận');
+                    Application::$app->db->getConnection()->commit();
+                    Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
+                }
+            }
+           
+        }
+        else
         {
            
             $attributes = ['status'=>$status];

@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="buttons d-flex flex-row mt-5 gap-5">
-                        <a href="/checkout"><button class="btn btn-outline-dark">Mua ngay</button></a>
+                        <a href="buy-now?id=<?php echo $value->product_id?>"><button class="btn btn-outline-dark">Mua ngay</button></a>
                         
                         <a href="add-cart?id=<?php echo $value->product_id?>"> <button class="btn btn-dark">Thêm vào giỏ hàng</button></a>
                        
