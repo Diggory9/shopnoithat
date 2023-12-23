@@ -30,8 +30,7 @@ use Exception;
                 'user_lastname'=>[self::RULE_REQUIRED],
                 'user_phone'=>[self::RULE_REQUIRED,self::RULE_PHONE],
                 'user_address'=>[self::RULE_REQUIRED,[self::RULE_MIN,'min'=>5]],
-                'user_password'=>[self::RULE_REQUIRED,[self::RULE_MIN,'min'=>4]],
-                'user_email'=>[self::RULE_REQUIRED, self::RULE_EMAIL]
+                'user_email'=>[self::RULE_REQUIRED, self::RULE_EMAIL,self::RULE_UNIQUE]
             ];
         }
 
@@ -64,16 +63,15 @@ use Exception;
         }
         public function insertData()
         {
-            $data = self::findOne(['user_email'=>$this->user_email]);
-            $isError = 0;
-            if(!empty( $data))
-            {
-                $this->addErrors('email','Tên email đã tồn tại trong hệ thống');
-                $isError =1;
-            }
-            if(empty($this->user_password))
+            $this->user_password = trim($this->user_password); 
+            if(empty($this->user_password)||$this->user_password ==null ||$this->user_password="")
             {
                 $this->addErrors(self::RULE_REQUIRED,'Mật khẩu chưa được nhập');
+                $isError =1;
+            }
+            if(strlen($this->user_password)< 4)
+            {
+                $this->addErrors(self::RULE_UNIQUE,'Mật khẩu bị trùng');
                 $isError =1;
             }
             if($isError == 1)
