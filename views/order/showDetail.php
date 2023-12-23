@@ -47,14 +47,27 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
                                     {
                                         ?>
                                         <option
-                                         <?php if ($i ===  $order->status)
-                                                {
-                                                    echo 'selected';
+                                         <?php 
+                                                if($order->status ==4){
+                                                    if($i == $order->status)
+                                                    {
+                                                        echo 'selected';
+                                                    }
+                                                    else{
+                                                        echo 'disabled';
+                                                    }
+                                                }else{
+                                                    if ($i ===  $order->status)
+                                                    {
+                                                        echo 'selected';
+                                                    }
+                                                    else if( $i-1 != $order->status && $i != $order->status && $i != 5)
+                                                    {
+                                                        
+                                                        echo 'disabled';
+                                                    }
                                                 }
-                                                else if( $i-1 != $order->status && $i != $order->status && $i != 5)
-                                                {
-                                                    echo 'disabled';
-                                                }
+                                              
                                         ?> 
                                             
                                             value="<?php echo $i ?>"><?php echo $status[$i] ?></option>

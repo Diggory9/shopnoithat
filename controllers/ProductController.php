@@ -6,6 +6,7 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\middlewares\AdminMiddleware;
 use app\core\Request;
+use app\models\Cart;
 use app\models\Category;
 use app\models\Product;
 use app\models\ProductImage;
@@ -16,6 +17,7 @@ class ProductController extends Controller
     private $product;
     private $category;
     private $supplier;
+    private $cart;
     
 
     public function __construct()
@@ -23,6 +25,7 @@ class ProductController extends Controller
         $this->product = new Product();
         $this->category = new Category();
         $this->supplier = new Supplier();
+        $this->cart = new Cart($_SESSION['cart']);
         $this->registerMiddleware(new AdminMiddleware(['productIndexAdmin','productAddAdmin','productDetailAdmin']));
     }
     public function productIndexAdmin(Request $request){
@@ -253,6 +256,21 @@ class ProductController extends Controller
                 Application::$app->response->redirect('/admin/product/edit?id='.$productId);
             }
         }
+    }
+
+    public function handleBuyNow(Request $request)
+    {
+        $reqGet = $request->getBody();
+        if(!empty($reqGet['id']))
+        {
+            $proId = $reqGet['id'];
+            $this->cart->addProduct($proId);
+            Application::$app->session->setFlash('success','Thêm sản phẩm thành công');
+            Application::$app->response->redirect('/checkout');
+        }
+        $currentUrl = $_SERVER['HTTP_REFERER'];
+        Application::$app->session->setFlash('success','Thêm sản phẩm thành công');
+        Application::$app->response->redirect($currentUrl);
     }
 
 

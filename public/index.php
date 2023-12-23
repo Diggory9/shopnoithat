@@ -50,6 +50,7 @@ $app->router->get('/user_order/detail',[UserOrderController::class, 'getDataDeta
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);
 $app->router->get('/product',[ProductController::class,'showProduct']);
+$app->router->get('/buy-now',[ProductController::class,'handleBuyNow']);
 
 
 // cart
