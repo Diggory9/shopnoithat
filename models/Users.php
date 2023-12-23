@@ -59,6 +59,7 @@ use Exception;
         }   
         public function insertData()
         {
+           
             $this->status = self::STATUS_ACTIVITY;
             $this->user_password = md5($this->user_password);
             return self::save(['user_email','user_firstname','user_lastname','user_phone','user_address','user_password','status']);

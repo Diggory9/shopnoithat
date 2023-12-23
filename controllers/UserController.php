@@ -85,9 +85,13 @@ class UserController extends Controller
             $user->user_password = trim($user->user_password);
             if (empty($user->user_password) || $user->user_password == null || $user->user_password = "")
             {
-                $user->addErrors('unique', 'Mật khẩu chưa được nhập');
+                $user->addErrors('user_password','Chưa nhập dữ liệu');
             }
-            if ($user->validate() && $user->insertData())
+            if(strlen($user->user_password ) <4)
+            {
+                $user->addErrors('user_password', 'Mật khẩu không đủ ký tự');
+            }
+            if ($user->validate() && $user->insertData() && empty($user->errors))
             {
                 Application::$app->session->setFlash('success', 'Insert data user successfuly!');
                 Application::$app->response->redirect('/admin/user');
