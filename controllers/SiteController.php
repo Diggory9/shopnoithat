@@ -28,7 +28,10 @@ class SiteController extends Controller
         return $this->render('home',$params);
 
     }
-
+    public function about()
+    {
+        return $this->render('about');
+    }
     public function contact()
     {
         return $this->render('contact');

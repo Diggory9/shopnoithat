@@ -83,7 +83,7 @@ class UserController extends Controller
         {
             $user->loadData($request->getBody());
             $user->user_password = trim($user->user_password);
-            if (empty($user->user_password) || $user->user_password == null || $user->user_password = "")
+            if (empty($user->user_password) || $user->user_password == null || $user->user_password == "")
             {
                 $user->addErrors('user_password','Chưa nhập dữ liệu');
             }

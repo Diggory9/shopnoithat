@@ -10,7 +10,7 @@
                     <h5 class="card-title">Đơn hàng mới</h5>
                     <h3 class="card-body"><?php echo $countOrderNew[0]; ?> đơn hàng</h3>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">Xem chi tiết</a>
+                        <a class="small text-white stretched-link" href="/admin/order?selectOption=new_order">Xem chi tiết</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
