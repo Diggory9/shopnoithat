@@ -65,10 +65,10 @@ use app\core\Application;
                            Quản lý sản phẩm
                         </a>
                          <!-- Role -->
-                        <a class="nav-link" href="/admin/role">
+                        <!-- <a class="nav-link" href="/admin/role">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                            Quản lý role
-                        </a>
+                        </a> -->
                          <!-- Nhà cung cấp -->
                         <a class="nav-link" href="/admin/supplier">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

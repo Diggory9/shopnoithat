@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row mb-5 mt-5">
+    <div class="row mb-1 mt-1">
         <div class="col-6">
             <h2 class="text-primary">Trang sản phẩm</h2>
         </div>
@@ -21,13 +21,14 @@
         </div>
     </div>
     <div class="row mb-3 mt-3">
-        <form action="/admin/product" method="get" id="filterProduct">
-            <select name="selectOption">
+        <form class="col-3" action="/admin/product" method="get" id="filterProduct">
+            <select class="form-select" name="selectOption">
+                
                
                 <option value="pro_all">Show sản tất cả</option>
                 <option value="pro_almost">Show sản phẩm sắp hết</option>
             </select>
-            <input type="submit" value="lọc" class="btn-sm btn-secondary"/>
+            <input style="margin-top: 10px; background-color:#3b5d50" type="submit" value="Áp dụng" class="btn-sm btn-secondary"/>
         </form>
     </div>
     <div class="card">

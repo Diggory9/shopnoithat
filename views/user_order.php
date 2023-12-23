@@ -8,7 +8,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col">Khách hàng</th>
+                        <th class="col">Người nhận hàng</th>
                         <th class="col">Ngày đặt hàng</th>
                         <th class="col">Trạng thái</th>
                         <th class="col">Tổng tiền</th>

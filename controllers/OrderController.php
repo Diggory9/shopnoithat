@@ -36,13 +36,28 @@ class OrderController extends Controller
             //exit;
             if($option == "new_order"){
                 $data=$this->order->getAllOrderNew();
-                //var_dump($data);
-                $dataAll = $data;
-                if(!empty($dataAll)){
-                    $this->setLayout('admin');
-                    return $this->render('order/showTable',['data'=>$dataAll]);
-                }
             }
+            else if($option =="accept_order"){
+                $data=$this->order->getAllOrderAccept();
+            }
+            else if($option =="wait_order"){
+                $data=$this->order->getAllOrderWait();
+            }
+            else if($option =="delivery_order"){
+                $data=$this->order->getAllOrderDelivery();
+            }
+            else if($option =="delivered_order"){
+                $data=$this->order->getAllOrderDelivered();
+            }
+            else if($option =="cancel_order"){
+                $data=$this->order->getAllOrderCancel();
+            }
+            $dataAll = $data;
+            if(!empty($dataAll)){
+                $this->setLayout('admin');
+                return $this->render('order/showTable',['data'=>$dataAll]);
+            }
+        
         }
 
        else if(!empty($reqGet['order_id'])){
