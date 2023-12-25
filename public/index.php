@@ -82,12 +82,12 @@ $app->router->post('/admin/supplier/edit',[SupplierController::class,'edit']);
 $app->router->get('/admin/supplier/remove',[SupplierController::class,'remove']);
 
 // role
-$app->router->get('/admin/role',[RoleController::class,'index']);
-$app->router->get('/admin/role/add',[RoleController::class,'add']);
-$app->router->post('/admin/role/add',[RoleController::class,'add']);
-$app->router->get('/admin/role/edit',[RoleController::class,'edit']);
-$app->router->post('/admin/role/edit',[RoleController::class,'edit']);
-$app->router->get('/admin/role/remove',[RoleController::class,'remove']);
+// $app->router->get('/admin/role',[RoleController::class,'index']);
+// $app->router->get('/admin/role/add',[RoleController::class,'add']);
+// $app->router->post('/admin/role/add',[RoleController::class,'add']);
+// $app->router->get('/admin/role/edit',[RoleController::class,'edit']);
+// $app->router->post('/admin/role/edit',[RoleController::class,'edit']);
+// $app->router->get('/admin/role/remove',[RoleController::class,'remove']);
 
 // product admin
 $app->router->get('/admin/product',[ProductController::class,'productIndexAdmin']);

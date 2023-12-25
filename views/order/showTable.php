@@ -5,7 +5,7 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
 ?>
 
 <div class="container">
-    <div class="row mb-5 mt-5">
+    <div class="row mt-4">
         <div class="col-6">
             <h2 class="text-primary">Trang quản lý đơn hàng</h2>
         </div>
@@ -25,8 +25,23 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
                 </li>
             </ul>
         </div>
+        
+        
     </div>
 
+    <!-- Sắp xếp  -->
+    <label style="margin-top: 30px;">Bộ lọc</label>
+        <form class="col-4"  style="margin-top: 10px;" action="/admin/order" method="get" id="filterProduct">
+            <select name="selectOption" class="form-select form-select-sm" aria-label=".form-select-sm example">                
+                <option value="new_order">Đơn hàng mới</option>
+                <option value="accept_order">Xác nhận đơn hàng</option>
+                <option value="wait_order">Chờ xuất hàng</option>
+                <option value="delivery_order">Chờ giao hàng</option>
+                <option value="delivered_order">Đã giao hàng</option>
+                <option value="cancel_order">Hủy đơn hàng</option>
+            </select>
+            <input style="margin-top: 20px;background-color:#3b5d50;" type="submit" value="Áp dụng" class="btn-sm btn-secondary"/>
+        </form>
     <div class="card">
         <table class="table table-striped">
             <thead>
