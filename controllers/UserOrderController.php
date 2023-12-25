@@ -78,6 +78,7 @@ class UserOrderController extends Controller
             } 
             else
             {
+                Application::$app->db->getConnection()->beginTransaction();
                 $detail = $this->detailoder->getDataByOrderID($orderId);
                 foreach($detail as $value)
                 {
