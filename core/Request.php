@@ -37,10 +37,10 @@
                 {
                     if(is_array($value))
                     {
-                        $body[$key] = filter_input(INPUT_GET , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                        $body[$key] = trim(filter_input(INPUT_GET , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY)) ;
                     }else
                     {
-                        $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                        $body[$key] = trim(filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS));
                     }
                 }
             }
@@ -52,10 +52,10 @@
                 
                     if(is_array($value))
                     {
-                        $body[$key] = filter_input(INPUT_POST , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                        $body[$key] = trim(filter_input(INPUT_POST , $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY)) ;
                     }else
                     {
-                        $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                        $body[$key] = trim(filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS));
                     }
                 }
             

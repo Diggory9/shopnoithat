@@ -9,9 +9,9 @@ use Exception;
 class Category extends DbModel
 {
     protected $table = 'category';
-    public int $category_id;
-    public string $category_name;
-    public string $category_description;
+    public  $category_id;
+    public  $category_name;
+    public  $category_description;
     public function rules()
     {
         return [
