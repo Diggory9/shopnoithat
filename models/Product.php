@@ -222,6 +222,36 @@ class Product extends DbModel
             return null;
         }
     }
+    public function sortProductByPriceASC()
+    {
+        // Sắp xếp sản phẩm có giá từ thấp tới cao
+        try{
+
+            $sql ="SELECT * FROM `product` ORDER BY `product`.`product_price` ASC";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
+    public function sortProductByPriceDESC()
+    {
+         // Sắp xếp sản phẩm có giá từ cao tới thấp
+        try{
+
+            $sql ="SELECT * FROM `product` ORDER BY `product`.`product_price` DESC";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
 
 }
 ?>

@@ -77,10 +77,26 @@ class ProductController extends Controller
 
     public function showProduct(Request $request)
     {
-
-        
         $reqGet = $request->getBody();
-        if(!empty($reqGet['category_id'])){
+        
+        if(!empty($reqGet['selectOption'])){
+            $option = $reqGet['selectOption'];
+            if($option=="pro_asc"){
+                $data = $this->product->sortProductByPriceASC();
+            }
+            else if($option == "pro_desc"){
+                $data = $this->product->sortProductByPriceDESC();
+            }
+        }
+        //search bên trang product
+        else if(!empty($reqGet['product_name'])){    
+            $name= $reqGet['product_name'];
+            $data =  $this->product->getProductByProductName($name);
+           
+        }
+        
+        //Lọc theo danh mục
+        else if(!empty($reqGet['category_id'])){
             
             $id = $reqGet['category_id'];
             $data =  $this->product->getProductByCateID($id);

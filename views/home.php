@@ -20,16 +20,112 @@
 				</div>
 			</div>
 		<!-- End Hero Section -->
-		
-		
-		
-		
+		<!-- Start We Help Section -->
+		<div class="we-help-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-7 mb-5 mb-lg-0">
+						<div class="imgs-grid">
+							<div class="grid grid-1"><img src="images/img-grid-1.jpg" alt="Untree.co"></div>
+							<div class="grid grid-2"><img src="images/img-grid-2.jpg" alt="Untree.co"></div>
+							<div class="grid grid-3"><img src="images/img-grid-3.jpg" alt="Untree.co"></div>
+						</div>
+					</div>
+					<div class="col-lg-5 ps-lg-5">
+						<h2 class="section-title mb-4">Giá trị và sự khác biệt</h2>
+						<p>	Với mong muốn phát triển thương hiệu Việt bằng nội lực, 
+							chúng tôi chú trọng vào thiết kế và sản xuất nội thất trong nước.
+							Danh mục sản phẩm thường xuyên được đổi mới và cập nhật,
+							liên tục cung cấp cho khách hàng các dòng sản phẩm theo xu hướng mới nhất.
+							Hơn 70% sản phẩm được thiết kế,sản xuất bởi đội ngũ nhân viên cùng công nhân
+							ưu tú với nhà máy có cơ sở vật chất hiện đại bậc nhất tại Việt Nam.
+							
+						</p>
+						<p>
+							Sự khác biệt chính là sáng tạo nội thất thành phong cách riêng, 
+							phù hợp với nhu cầu khách hàng. Không chỉ là sản phẩm nội thất đơn thuần, 
+							mà còn là không gian sống theo phong cách riêng với cách bày trí hài hòa từ đồ nội thất kết hợp với đồ trang trí. 
+							Giúp khách hàng cảm nhận được một không gian sống thực sự, cảm thấy thoải mái để tận hưởng cuộc sống.
+						</p>
+
+						<p><a herf="#" class="btn">Explore</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End We Help Section -->
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between align-items-center">
+					<div class="col-lg-6">
+						<h2 class="section-title">Tại sao chọn chúng tôi</h2>
+						<p>Sự khác biệt chúng tôi chính là sáng tạo nội thất 
+                            thành phong cách riêng, phù hợp với nhu cầu khách hàng.
+                             Không chỉ là sản phẩm nội thất đơn thuần, 
+                             mà còn là không gian sống theo phong cách riêng với cách bày tr
+                             í hài hòa từ đồ nội thất kết hợp với đồ trang trí. 
+                           </p>
+
+						<div class="row my-5">
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/truck.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Nhanh chóng</h3>
+									<p>Giao hàng nhanh chóng trong nội thành TPHCM</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/bag.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Nhận hàng mới thanh toán</h3>
+									<p>Chính sách nhận hàng kiểm tra hàng mới thanh toán</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/support.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Cam kết giá rẻ</h3>
+									<p>Cam kết giá phù hợp với mặt bằng chung của thị trường</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/return.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Chính sách đổi trả</h3>
+									<p>Bảo hành 1 đổi 1 đối với lỗi do nhà sản xuất</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
 		<!-- Sản phẩm -->
-		
-		
 		<!-- Start Popular Product -->
-	<div class="untree_co-section product-section before-footer-section">
+		<div class="untree_co-section product-section before-footer-section">
 		    <div class="container">
+				
 		      	<div class="row">
 				<div class="row mb-5">
 					<div class="col-md-6">
@@ -49,7 +145,7 @@
 							<img src="<?php echo BASE__URL.'images/uploads/'. $value->images[0]->image_path;?>" class="img-fluid product-thumbnail">
 							<h3 class="product-title"><?php echo $value->product_name;?></h3>
 							<strong class="product-price"><?php 
-                                 $priceFormat = number_format($value->product_price, 2, ',', '.');
+                                 $priceFormat = number_format($value->product_price, 0, ',', '.');
                                  echo $priceFormat.' đ';
                             ?></strong>
 
@@ -69,97 +165,9 @@
 		    </div>
 		</div>
 		<!-- End Popular Product -->
-		<!-- Start Why Choose Us Section -->
-		<div class="why-choose-section">
-			<div class="container">
-				<div class="row justify-content-between">
-					<div class="col-lg-6">
-						<h2 class="section-title">Why Choose Us</h2>
-						<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+		
 
-						<div class="row my-5">
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/truck.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>Fast &amp; Free Shipping</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/bag.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>Easy to Shop</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/support.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>24/7 Support</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/return.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>Hassle Free Returns</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="col-lg-5">
-						<div class="img-wrap">
-							<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!-- End Why Choose Us Section -->
-
-		<!-- Start We Help Section -->
-		<div class="we-help-section">
-			<div class="container">
-				<div class="row justify-content-between">
-					<div class="col-lg-7 mb-5 mb-lg-0">
-						<div class="imgs-grid">
-							<div class="grid grid-1"><img src="images/img-grid-1.jpg" alt="Untree.co"></div>
-							<div class="grid grid-2"><img src="images/img-grid-2.jpg" alt="Untree.co"></div>
-							<div class="grid grid-3"><img src="images/img-grid-3.jpg" alt="Untree.co"></div>
-						</div>
-					</div>
-					<div class="col-lg-5 ps-lg-5">
-						<h2 class="section-title mb-4">We Help You Make Modern Interior Design</h2>
-						<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
-
-						<ul class="list-unstyled custom-list my-4">
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-							<li>Donec vitae odio quis nisl dapibus malesuada</li>
-						</ul>
-						<p><a herf="#" class="btn">Explore</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End We Help Section -->
-
+		
 
 
 		<!-- Start Testimonial Slider -->
@@ -167,7 +175,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-7 mx-auto text-center">
-						<h2 class="section-title">Testimonials</h2>
+						<h2 class="section-title">Phản hồi</h2>
 					</div>
 				</div>
 
@@ -188,7 +196,7 @@
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+													<p>&ldquo;Dịch vụ chất lượng, chế độ bảo dưỡng kỹ. Ai mà mua hàng ở đây thì rất đáng đồng tiền bát gạo nha, giá tiền đi đôi chất lượng ạ.&rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">
@@ -211,15 +219,17 @@
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+													<p>&ldquo;Sản phẩm tốt ngồi êm ái thoải mái rất hài lòng , kèm theo dịch vụ hậu mãi rất tốt , 
+														đúng định kỳ , sạch sẽ, nhân viên đến chăm sóc sản phẩm thái độ phẩm chất rất có tâm về sản phẩm.
+														Rất hài lòng chế độ  mang đến cho gđ &rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">
 													<div class="author-pic">
 														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
 													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+													<h3 class="font-weight-bold">Thế Nguyễn</h3>
+													<span class="position d-block mb-3">CEO, Co-Founder,STU</span>
 												</div>
 											</div>
 
@@ -234,15 +244,15 @@
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+													<p>&ldquo;Sản phẩm TV SHOP đẳng cấp, xứng đáng để sử dụng, sự đầu tư về chi phí, chất lượng sản phẩm, chất lượng dịch vụ bảo hành tốt.&rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">
 													<div class="author-pic">
 														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
 													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+													<h3 class="font-weight-bold">Việt Nguyễn</h3>
+													<span class="position d-block mb-3">CEO, Co-Founder, STU </span>
 												</div>
 											</div>
 

@@ -178,4 +178,79 @@ class Order extends DbModel
             return null;
         }
     }
+    public function getAllOrderAccept()
+    {
+        // lấy những đơn hàng trạng thái xac nhan don hang
+        try{
+
+            $sql ="SELECT * FROM `user_order` WHERE `status` = 1;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
+    public function getAllOrderWait()
+    {
+        // lấy những đơn hàng trạng thái xac nhan don hang
+        try{
+
+            $sql ="SELECT * FROM `user_order` WHERE `status` = 2;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
+    public function getAllOrderDelivery()
+    {
+        // lấy những đơn hàng trạng thái dang giao hang
+        try{
+
+            $sql ="SELECT * FROM `user_order` WHERE `status` = 3;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
+    public function getAllOrderDelivered()
+    {
+        // lấy những đơn hàng trạng thái da giao hang
+        try{
+            $sql ="SELECT * FROM `user_order` WHERE `status` = 4;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
+    public function getAllOrderCancel()
+    {
+        // lấy những đơn hàng trạng thái da huy
+        try{
+            $sql ="SELECT * FROM `user_order` WHERE `status` = 5;";
+            $stmt = Application::$app->db->getConnection()->prepare($sql);
+            $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch(Exception $e)
+        {
+            return null;
+        }
+    }
+   
 }
+    
