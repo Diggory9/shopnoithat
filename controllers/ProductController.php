@@ -158,7 +158,7 @@ class ProductController extends Controller
                 Application::$app->response->redirect('/admin/product');
             } else
             {
-                Application::$app->session->setFlash('error', 'Error insert data category!');
+                Application::$app->session->setFlash('error', 'Error insert data product!');
                 $this->setLayout('admin');
                 return $this->render('product/showAdd', ['model' => $this->product, 'categoris' => $categoris, 'suppliers' => $suppliers]);
             }
