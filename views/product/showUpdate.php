@@ -89,7 +89,7 @@
     <form action="addImg" method="post" enctype="multipart/form-data">
         <input type="text" hidden name="id" value="<?php echo $model->product_id; ?>">
         <div class="form-outline mb-4">
-            <input type="file" class="form-control" name="images[]" id="validatedCustomFile">
+            <input multiple type="file" class="form-control" name="images[]" id="validatedCustomFile">
         </div>
         <div class="form-outline mb-4">
             <input class="btn btn-primary rounded" type="submit" value="Thêm" />
