@@ -101,7 +101,6 @@ class Order extends DbModel
                 $product = $product->getProductById($key);
                 if($product->product_stock_quantity < $value['sl'])
                 {
-                    Application::$app->session->setFlash('success', 'Đơn hàng đã thêm thành công');
                     Application::$app->db->getConnection()->rollBack();
                     return false;
                 }

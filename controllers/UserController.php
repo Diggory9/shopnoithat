@@ -6,6 +6,7 @@ use app\core\Controller;
 use app\core\Request;
 use app\models\User;
 use app\models\Users;
+use PDO;
 
 class UserController extends Controller
 {
@@ -103,10 +104,10 @@ class UserController extends Controller
                     $user->addErrors('user_email', 'Không phải email hợp lệ');
                 }
                 $tableName = $user->tableName();
-                $stmt =  Application::$app->db->getConnection()->prepare("SELECT * FROM $tableName WHERE 'user_email' =:email");
+                $stmt =  Application::$app->db->getConnection()->prepare("SELECT * FROM $tableName WHERE user_email =:email");
                 $stmt->bindValue(":email", $user->user_email);
                 $stmt->execute();
-                $record = $stmt->fetchObject();
+                $record = $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
                 if($record)
                 {
                     $user->addErrors('user_email', 'Email đã bị trùng trong cơ sở dữ liệu');
