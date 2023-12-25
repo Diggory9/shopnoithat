@@ -13,8 +13,8 @@
             
             <p class="text-muted mb-4"><?php echo $model->user_address; ?></p>
             <div class="d-flex justify-content-center mb-2">
-              <a href="/profile/editProfile" style="margin-right: 2%;"> <button type="button" class="btn btn-primary">Update Profile</button></a> 
-              <a href="/user_order"style="margin-left: 2%;"> <button   type="button" class="btn btn-primary">Đơn hàng</button></a>     
+              <a href="/profile/editProfile" style="margin-right: 2%;"> <button class="btn btn-primary">Update Profile</button></a> 
+              <a href="/user-order"style="margin-left: 2%;"> <button class="btn btn-primary">Đơn hàng</button></a>     
             </div>
           </div>
         </div>

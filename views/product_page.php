@@ -67,7 +67,9 @@
                             ?></span>
                             </div>
                             <div class="cart-button mt-3 px-2 d-flex justify-content-between align-items-center">
-                                <button  class="btn btn-primary text-uppercase"><a href="/detail-product?id=<?php echo $value->product_id?>" class="text-decoration-none text-white">CHI TIẾT SẢN PHẨM</a></button>
+                            
+                             <a href="/detail-product?id=<?php echo $value->product_id?>">  <button class=" btn btn-primary">CHI TIẾT SẢN PHẨM</button></a>
+                              
                                 <a href="add-cart?id=<?php echo $value->product_id?>">  <button class=" btn btn-primary"><i class="fa-brands fa-opencart"></i></button></a>
                                
                             </div>

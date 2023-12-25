@@ -72,7 +72,18 @@ class ProductController extends Controller
         $proData = $pro->getProductById($id);
         $imageData = $image->getImageByProductId($id);
 
-        return $this->render('detail_product', ['product' => $proData, 'image' => $imageData]);
+        // show 4 sản phẩm ngẫu nhiên
+        $randomPro = $pro->getProductRand(4);
+        $imageProRand = new ProductImage();
+        foreach ($randomPro as $value)
+        {
+            $dataImg = $imageProRand->getImageByProductId($value->product_id);
+            if (isset($dataImg))
+            {
+                $value->images = $dataImg;
+            }
+        }
+        return $this->render('detail_product', ['product' => $proData, 'image' => $imageData,'productRand'=>$randomPro]);
     }
 
     public function showProduct(Request $request)
@@ -100,9 +111,6 @@ class ProductController extends Controller
             
             $id = $reqGet['category_id'];
             $data =  $this->product->getProductByCateID($id);
-            // echo '<pre>';
-            // var_dump($data);
-            // echo '</pre>';
         }
         else{
             $data = $this->product->getProductByPage();

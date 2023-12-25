@@ -8,7 +8,7 @@
 								<h1>Nội thất cao cấp</h1>
 								
 								<p class="mb-4">Nhà là gia đình - Cùng trải nghiệm những sản phẩm và dịch vụ đẳng cấp hàng đầu thế giới, cùng tô điểm Yêu thương cho gia đình!</p>
-								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+								<p><a href="/product" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -128,8 +128,8 @@
 				
 		      	<div class="row">
 				<div class="row mb-5">
-					<div class="col-md-6">
-						<h2 class="section-title">Sản phẩm</h2>
+					<div class="col-md-12 text-center">
+						<h2 class="section-title text-secondary">Sản phẩm</h2>
 					</div>
 					
 				</div>
@@ -165,10 +165,6 @@
 		    </div>
 		</div>
 		<!-- End Popular Product -->
-		
-
-		
-
 
 		<!-- Start Testimonial Slider -->
 		<div class="testimonial-section">

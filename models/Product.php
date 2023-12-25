@@ -252,6 +252,26 @@ class Product extends DbModel
             return null;
         }
     }
+    // lấy ramdom sản phẩm
+
+    public function getProductRand($number)
+    {
+        try{
+            $sql = "SELECT *
+            FROM product
+            ORDER BY RAND()
+            LIMIT 4;";
+    
+            $stmt = $this->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_CLASS,static::class);
+
+        }catch (Exception $e) {
+            # code...
+            return null;
+        }
+      
+    }
 
 }
 ?>

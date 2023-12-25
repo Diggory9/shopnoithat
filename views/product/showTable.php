@@ -4,7 +4,7 @@
             <h2 class="text-primary">Trang sản phẩm</h2>
         </div>
         <div class="col-6 text-end">
-            <a href="/admin/product/add" class="btn btn-primary rounded">Create</a>
+            <a href="/admin/product/add" title="Thêm sản phẩm" class="btn btn-primary rounded">Create</a>
         </div>
         <!-- form tìm kiếm -->
         <div class="col-md-5 order-md-2 mb-8">
@@ -64,11 +64,11 @@
                             <td><?php echo empty($value->supplier)?'Không có nhà cung cấp':$value->supplier->supplier_name ?></td>
                             <td>
                             <a href="/admin/product/edit?id=<?php echo $value->product_id ?>"
-                                    class="link-underline btn btn-primary btn-sm rounded" title="edit user"><i
+                                    class="link-underline btn btn-primary btn-sm rounded" title="Chi tiết sản phẩm"><i
                                         class="fa-regular fa-pen-to-square"></i></a>&nbsp;
                                 <a href="#deleteModal<?php echo $value->product_id ?>" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal<?php echo $value->product_id ?>"
-                                    class="link-underline btn btn-primary btn-sm rounded" title="remove user"><i
+                                    class="link-underline btn btn-primary btn-sm rounded" title="Xóa sản phẩm"><i
                                         class="fa-solid fa-trash"></i></a>
                                 <div class="modal fade" id="deleteModal<?php echo $value->product_id ?>" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,8 +95,7 @@
                                     </div>
                                 </div>
                                 <a href="/admin/product/detail?id=<?php echo $value->product_id?>"
-                                    class="link-underline btn btn-primary btn-sm rounded" title="Chi tiết sản phẩm"><i
-                                        class="fa-regular fa-pen-to-square"></i></a>
+                                    class="link-underline btn btn-primary btn-sm rounded" title="Chi tiết sản phẩm"><i class="fa-solid fa-asterisk"></i></a>
                             </td>
                         </tr>
                         <?php

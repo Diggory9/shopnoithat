@@ -106,7 +106,7 @@
 
 				<div class="row mb-5">
 					<div class="col-lg-5 mx-auto text-center">
-						<h2 class="section-title">Nhân sự</h2>
+						<h2 class="section-title text-primary">Kỹ sư nội thất của chúng tôi</h2>
 					</div>
 				</div>
 

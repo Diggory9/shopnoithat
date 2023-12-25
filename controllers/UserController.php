@@ -34,12 +34,11 @@ class UserController extends Controller
         $u = new User();
         $id = $_SESSION['user'];
         $user = $u->findOne(['user_id' => $id]);
-        echo '<pre>';
-        //var_dump($user);
-        echo '</pre>';
         return $this->render('profile/showProfile', ['model' => $user]);
 
     }
+
+
     public function editProfile(Request $request)
     {
         $user = new Users();
@@ -93,6 +92,29 @@ class UserController extends Controller
             {
                 $user->addErrors('user_password', 'Mật khẩu không đủ ký tự');
             }
+
+            if(empty($user->user_email)|| $user->user_email == null || $user->user_email =="")
+            {
+                $user->addErrors('user_email', 'Email chưa được nhập');
+            }else{
+
+                if( !filter_var($user->user_email, FILTER_VALIDATE_EMAIL))
+                {
+                    $user->addErrors('user_email', 'Không phải email hợp lệ');
+                }
+                $tableName = $user->tableName();
+                $stmt =  Application::$app->db->getConnection()->prepare("SELECT * FROM $tableName WHERE 'user_email' =:email");
+                $stmt->bindValue(":email", $user->user_email);
+                $stmt->execute();
+                $record = $stmt->fetchObject();
+                if($record)
+                {
+                    $user->addErrors('user_email', 'Email đã bị trùng trong cơ sở dữ liệu');
+                }
+            }
+
+
+            //'user_email'=>[self::RULE_REQUIRED, self::RULE_EMAIL,[self::RULE_UNIQUE,'class'=>$this::class]],
             if ($user->validate() && $user->insertData() && empty($user->errors))
             {
                 Application::$app->session->setFlash('success', 'Insert data user successfuly!');

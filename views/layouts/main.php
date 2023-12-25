@@ -24,12 +24,12 @@ use app\core\Application;
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
 		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="<?php echo BASE__URL?>css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 		
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
-		<link href="css/tiny-slider.css" rel="stylesheet">	
+		<link href="<?php echo BASE__URL?>css/tiny-slider.css" rel="stylesheet">	
 		<link href="<?php echo BASE__URL?>css/admin.css" rel="stylesheet" />
     <link href="<?php echo BASE__URL?>css/style.css" rel="stylesheet"/>
     <link href="<?php echo BASE__URL?>css/detailproduct.css" rel="stylesheet">
@@ -40,7 +40,7 @@ use app\core\Application;
 	<body>
 
 		<!-- Start Header/Navigation -->
-		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-	" arial-label="Furni navigation bar">
 
 			<div class="container">
 				<a class="navbar-brand" href="/">TV Shop</a>
@@ -61,7 +61,13 @@ use app\core\Application;
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo BASE__URL?>images/user.svg"></a>
+							
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo BASE__URL?>images/user.svg"><?php 
+							if(!empty($_SESSION['cart']))
+							{
+								echo '<span class="badge badge-light text-danger">'.count($_SESSION['cart']).'</span>';
+							}
+							?></a>
 							<div class="dropdown-menu">
 								<?php if(Application::$app->isGuest()):?>
 								<a class="dropdown-item" href="/login">Login</a>
@@ -74,7 +80,7 @@ use app\core\Application;
 									<?php endif?>
 								<?php endif?>
 								<div class="dropdown-divider"></div>
-								<a  class="nav-link text-black " href="/show-cart"><i class="fa-brands fa-opencart"></i> Giỏ hàng </a>
+								<div><a  class="nav-link text-black " href="/show-cart"><i class="fa-brands fa-opencart"></i> Giỏ hàng </a></div>
 							</div>
 						</li>
 					</ul>
@@ -97,7 +103,7 @@ use app\core\Application;
 		
 		<!-- End Footer Section -->	
 	<!-- Start Footer Section -->
-	<footer class="footer-section">
+	<footer class="footer-section bg-light">
 			<div class="container relative">
 
 				
@@ -199,9 +205,9 @@ use app\core\Application;
 		<!-- End Footer Section -->	
 
 
-		<script src="js/bootstrap.bundle.min.js"></script>
-		<script src="js/tiny-slider.js"></script>
-		<script src="js/custom.js"></script>
+		<script src="<?php echo BASE__URL?>js/bootstrap.bundle.min.js"></script>
+		<script src="<?php echo BASE__URL?>js/tiny-slider.js"></script>
+		<script src="<?php echo BASE__URL?>js/custom.js"></script>
 		<script src="<?php echo BASE__URL?>js/datatables-simple-demo.js"></script>
     <script src="<?php echo BASE__URL?>js/detailproduct.js"></script>
 		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
