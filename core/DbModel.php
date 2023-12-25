@@ -72,7 +72,6 @@ abstract class DbModel extends Model
             return true;
         }catch(Exception $e)
         {
-            echo $e->getMessage();
             return false;
         }
     }

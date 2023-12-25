@@ -155,7 +155,7 @@ class UserController extends Controller
                 Application::$app->response->redirect('/admin/user');
             } else
             {
-                Application::$app->session->setFlash('error', 'Error edit data user!');
+                Application::$app->session->setFlash('error', 'Lỗi khi cập nhật dữ liêu!');
                 $this->setLayout('admin');
                 return $this->render('user/showEdit', ['model' => $user]);
             }
@@ -176,11 +176,12 @@ class UserController extends Controller
             if ($user->removeUserById($reqGet['id']))
             {
 
-                Application::$app->session->setFlash('success', 'drop data user successfuly!');
+                Application::$app->session->setFlash('success', 'Xóa thành công.');
                 Application::$app->response->redirect('/admin/user');
-            } else
+            } 
+            else
             {
-                Application::$app->session->setFlash('error', 'Không thể xóa!');
+                Application::$app->session->setFlash('error','Không thể xóa! Người dùng này đang có các hóa đơn ');
                 Application::$app->response->redirect('/admin/user');
             }
         }

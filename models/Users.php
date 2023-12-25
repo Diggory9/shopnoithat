@@ -79,7 +79,11 @@ use Exception;
 
         public function removeUserById($id)
         {
-            return self::remove(['user_id'=>$id]);
+            if(self::remove(['user_id'=>$id]))
+            {
+                return true;
+            }
+            return false;
         }
     }
 

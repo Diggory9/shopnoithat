@@ -30,9 +30,10 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
     </div>
 
     <!-- Sắp xếp  -->
-    <label style="margin-top: 30px;">Bộ lọc</label>
-        <form class="col-4"  style="margin-top: 10px;" action="/admin/order" method="get" id="filterProduct">
-            <select name="selectOption" class="form-select form-select-sm" aria-label=".form-select-sm example">                
+        <h5>Bộ lọc</h5>
+        <form class="col-4 mb-5"  style="margin-top: 10px;" action="/admin/order" method="get" id="filterProduct">
+            <select name="selectOption" class="form-select form-select-sm" aria-label=".form-select-sm example">           
+                <option value="all">Tất cả đơn hàng</option>
                 <option value="new_order">Đơn hàng mới</option>
                 <option value="accept_order">Xác nhận đơn hàng</option>
                 <option value="wait_order">Chờ xuất hàng</option>
@@ -40,7 +41,7 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
                 <option value="delivered_order">Đã giao hàng</option>
                 <option value="cancel_order">Hủy đơn hàng</option>
             </select>
-            <input style="margin-top: 20px;background-color:#3b5d50;" type="submit" value="Áp dụng" class="btn-sm btn-secondary"/>
+            <input style="margin-top: 10px;background-color:#3b5d50;" type="submit" value="Áp dụng" class="btn-sm btn-secondary"/>
         </form>
     <div class="card">
         <table class="table table-striped">
@@ -82,7 +83,7 @@ $status = [0 => 'Đơn hàng mới', 1 => 'Xác nhận đơn hàng', 2 => 'Chờ
                     }
                 }
                 else{
-                    echo "Không tìm thấy mã đơn hàng";
+                    echo "Không tìm thấy đơn hàng phù hợp";
                 }
                 
                 ?>

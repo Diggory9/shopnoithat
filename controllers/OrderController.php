@@ -34,6 +34,8 @@ class OrderController extends Controller
             $option = $reqGet['selectOption'];
             //var_dump($option);
             //exit;
+
+            //lọc dữ liệu theo trạng thái của đơn hàng
             if($option == "new_order"){
                 $data=$this->order->getAllOrderNew();
             }
@@ -51,10 +53,19 @@ class OrderController extends Controller
             }
             else if($option =="cancel_order"){
                 $data=$this->order->getAllOrderCancel();
+            }else if($option =='all')
+            {
+                $dataAll = $this->order->getAll();
+                $this->setLayout('admin');
+                return $this->render('order/showTable',['data'=>$dataAll]);
             }
             $dataAll = $data;
             if(!empty($dataAll)){
                 $this->setLayout('admin');
+                return $this->render('order/showTable',['data'=>$dataAll]);
+            }else{
+                $this->setLayout('admin');
+                Application::$app->session->setFlash('error', 'Không tìm thấy đơn hàng!');
                 return $this->render('order/showTable',['data'=>$dataAll]);
             }
         
@@ -75,6 +86,7 @@ class OrderController extends Controller
         return $this->render('order/showTable',['data'=>$dataAll]);
         
     }
+    // chi tiết đơn hàng
     public function showDetail(Request $request)
     {
         $reqGet = $request->getBody();
@@ -90,6 +102,7 @@ class OrderController extends Controller
         $this->setLayout('admin');
         return $this->render('order/showDetail',['order'=>$orderData,'detailOrder'=>$orderDetailData]);
     }
+    //cập nhật trạng thái đơn hàng
     public function updateStatus(Request $request)
     {
         $reqGet = $request->getBody();
@@ -120,6 +133,9 @@ class OrderController extends Controller
                 Application::$app->session->setFlash('success', 'Đơn hàng đã được xác nhận');
                 Application::$app->db->getConnection()->commit();
                 Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
+            }else{
+                Application::$app->session->setFlash('error', 'Đơn hàng cập nhật không thành công');
+                Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
             }
 
         }else if($status == 5)
@@ -134,6 +150,10 @@ class OrderController extends Controller
                 if($this->order->updateOrder($attributes,$where))
                 {
                     Application::$app->session->setFlash('success', 'Đơn hàng đã được cập nhật');
+                    Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
+                }else
+                {
+                    Application::$app->session->setFlash('error', 'Đơn hàng cập nhật không thành công');
                     Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
                 }
             }
@@ -152,8 +172,11 @@ class OrderController extends Controller
                 {
                      // gửi maill là đã xác nhận đơn hàng.
                
-                    Application::$app->session->setFlash('success', 'Đơn hàng đã được xác nhận');
-                    Application::$app->db->getConnection()->commit();
+                     Application::$app->db->getConnection()->commit();
+                    Application::$app->session->setFlash('success', 'Đơn hàng đã được cập nhật');
+                    Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
+                }else{
+                    Application::$app->session->setFlash('error', 'Đơn hàng cập nhật không thành công');
                     Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
                 }
             }
@@ -168,9 +191,13 @@ class OrderController extends Controller
             {
                 Application::$app->session->setFlash('success', 'Đơn hàng đã được cập nhật');
                 Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
+            }else{
+                Application::$app->session->setFlash('error', 'Đơn hàng cập nhật không thành công');
+                Application::$app->response->redirect('/admin/order/detail?id='.$idOrder);
             }
         }
     }
+    // thêm hóa đơn khi admin cần nhập vào
     public function adminAddOrder(Request $request)
     {
         if($request->isPost())

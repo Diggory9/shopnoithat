@@ -102,6 +102,15 @@ use app\core\Application;
 
 			<?php Application::$app->session->removeFlash('success')?>
 		<?php endif; ?>
+        <?php
+		if (!empty(Application::$app->session->getFlash('error'))): ?>
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				<strong> <?php echo Application::$app->session->getFlash('error')?></strong>
+			</div>
+
+			<?php Application::$app->session->removeFlash('error')?>
+		<?php endif; ?>
             {{content}}
             
             <footer class="py-4 bg-light mt-auto">

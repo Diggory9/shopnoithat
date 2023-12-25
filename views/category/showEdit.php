@@ -16,8 +16,8 @@
       <!-- Password input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="form2Example2">Mô tả</label>
-          <textarea name="category_description" id="" cols="1" class="form-control <?php echo $model->hasError('category_description') ? 'is-invalid' : ''; ?>">
-          <?php echo !empty($model->category_description) ? $model->category_description : ''; ?></textarea>
+          <textarea name="category_description" id="" cols="1" aria-valuetext="" class="form-control <?php echo $model->hasError('category_description') ? 'is-invalid' : ''; ?>">
+          <?php echo !empty($model->category_description) ? $model->category_description : ""; ?></textarea>
         <div class="invalid-feedback">
           <?php echo $model->getFirstError('category_description'); ?>
         </div>
