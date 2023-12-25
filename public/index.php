@@ -23,7 +23,6 @@ $app->router->get('/contact',[SiteController::class,'contact']);
 $app->router->post('/contact',[SiteController::class,'handleContact']);
 
 $app->router->get('/', [SiteController::class,'home']);
-$app->router->get('/', [SiteController::class,'showProduct']);
 
 //about 
 
@@ -44,8 +43,9 @@ $app->router->get('/profile/editProfile',[UserController::class,'editProfile']);
 $app->router->post('/profile/editProfile',[UserController::class,'editProfile']);
 
 //user_order
-$app->router->get('/user_order',[UserOrderController::class,'getDataByUserId']);
-$app->router->get('/user_order/detail',[UserOrderController::class, 'getDataDetailOrderByID']);
+$app->router->get('/user-order',[UserOrderController::class,'getDataByUserId']);
+$app->router->get('/user-order/detail',[UserOrderController::class, 'getDataDetailOrderByID']);
+$app->router->get('/user-order/cancel-order',[UserOrderController::class, 'handleCancelOrder']);
 
 //product
 $app->router->get('/detail-product',[ProductController::class,'showDetail']);

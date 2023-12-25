@@ -26,7 +26,7 @@ use Exception;
                 'user_lastname'=>[self::RULE_REQUIRED],
                 'user_phone'=>[self::RULE_REQUIRED,self::RULE_PHONE],
                 'user_address'=>[self::RULE_REQUIRED,[self::RULE_MIN,'min'=>5]],
-                'user_email'=>[self::RULE_REQUIRED, self::RULE_EMAIL,[self::RULE_UNIQUE,'class'=>$this::class]],
+                
             ];
         }
 
