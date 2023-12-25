@@ -128,6 +128,7 @@ use app\core\Application;
         crossorigin="anonymous"></script>
     <script src="<?php echo BASE__URL?>js/datatables-simple-demo.js"></script>
     <script src="<?php echo BASE__URL?>js/detailproduct.js"></script>
+    <script src="<?php echo BASE__URL?>assets/demo/bao-cao-danh-muc.js"></script>
 </body>
 
 </html>
