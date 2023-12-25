@@ -135,6 +135,7 @@ class ProductController extends Controller
         $suppliers = $this->supplier->selectAll();
         if ($request->isPost())
         {
+            $files = $request->getFiles();
             $this->product->loadData($request->getBody());
             if($this->product->product_price<0)
             {
@@ -145,7 +146,11 @@ class ProductController extends Controller
                 $this->product->addErrors('product_stock_quantity','Số lượng không phù hợp');
 
             }
-            $files = $request->getFiles();
+       
+            if(empty($files['images']['name'][0]))
+            {
+                $this->product->addErrors('images','Chưa thêm hình ảnh');
+            }
             $dir = __DIR_ROOT . '/public/images/uploads/';
             if ($this->product->validate() && $this->product->saveProduct($files['images'], $dir))
             {

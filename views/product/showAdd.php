@@ -76,9 +76,11 @@
             </div>
         </div>
         <div class="form-outline mb-4 col-md-5">
-            <input type="file" class="custom-file-input" id="customFile" name="images[]" multiple accept="image/*">
+            <input type="file" class="custom-file-input  <?php echo $model->hasError('images') ? 'is-invalid' : ''; ?>" id="customFile" name="images[]" multiple accept="image/*">
             <label class="custom-file-label" for="customFile">Choose file</label>
-
+            <div class="invalid-feedback">
+                <?php echo $model->getFirstError('images'); ?>
+            </div>
         </div>
         <div class="fom-outline mb-4">
             <input class="btn btn-primary rounded" type="submit" value="Submit" />
