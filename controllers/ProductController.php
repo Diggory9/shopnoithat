@@ -136,6 +136,15 @@ class ProductController extends Controller
         if ($request->isPost())
         {
             $this->product->loadData($request->getBody());
+            if($this->product->product_price<0)
+            {
+                $this->product->addErrors('product_price','Giá không phù hợp');
+            }
+            if($this->product->product_stock_quantity < 0)
+            {
+                $this->product->addErrors('product_stock_quantity','Số lượng không phù hợp');
+
+            }
             $files = $request->getFiles();
             $dir = __DIR_ROOT . '/public/images/uploads/';
             if ($this->product->validate() && $this->product->saveProduct($files['images'], $dir))

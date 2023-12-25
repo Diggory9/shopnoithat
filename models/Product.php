@@ -164,8 +164,16 @@ class Product extends DbModel
     }
 
     public function removeProById($id)
-    {
-        return self::remove(['product_id' => $id]);
+    {   
+        // xóa hình ảnh
+        try{
+            $img = new ProductImage();
+            $img->removeImageByProductId($id);
+            return self::remove(['product_id' => $id]);
+        }catch(Exception $e)
+        {
+            return false;
+        }
     }
     public function showProductByCategory($categoryId, $sizepage = 12, $page = 1)
     {

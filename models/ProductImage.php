@@ -43,6 +43,10 @@ class ProductImage extends DbModel
     {
         return self::findOne(['image_id'=> $id]);
     }
+    public function removeImageByProductId($id)
+    {
+        return self::remove(['product_id'=>$id]);
+    }
 }
 
 
